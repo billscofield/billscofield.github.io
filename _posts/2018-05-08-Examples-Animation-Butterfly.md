@@ -21,7 +21,7 @@ redirect_from:
 
 ```
 <link rel="stylesheet" href="http://www.刘蛟.中国/resources/butterfly/css/style.css">
-<div><img src="../images/flowers.jpeg" width="900px"></div>
+<div><img src="http://www.刘蛟.中国/resources/butterfly/images/flowers.jpeg" width="900px"></div>
 <div class="wrap">
     <div class="butterleft"><img src="http://www.刘蛟.中国/resources/butterfly/images/left.png"></div>
     <div class="butterbody"><img src="http://www.刘蛟.中国/resources/butterfly/images/body.png"></div>
