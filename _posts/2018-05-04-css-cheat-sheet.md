@@ -727,7 +727,31 @@ transform:skew(15deg) scale(2);
     * animation-name
     * animation-duration:动画执行时间
     * animation-timing-function
+
+        <a href="https://www.cnblogs.com/aaronjs/p/4642015.html">详细内容参考</a>
+
+        <a href="https://designmodo.com/steps-css-animations/" title="参考内容">参考内容2</a>
+
+        * steps(n,start/end)  
+            * 帧动画效果
+            * 第一个参数指定了时间函数中的间隔数量（必须是正整数），是 @keyframes [动画名] 中的两帧之间插入帧的数量
+            * 第二个参数可选，接受 start 和 end 两个值，指定在每个间隔的起点或是终点发生阶跃变化，默认为 end。
+                * step-start在变化过程中，都是以下一帧的显示效果来填充间隔动画，即不显示第一帧（系统重新整理的帧）
+                * step-end与上面相反，都是以上一帧的显示效果来填充间隔动画，即不显示最后一帧（系统重新整理的帧）
+                * 例如 
+                    * 秒针，如果设置为 animation-timing-function:steps(6,start),@keyframes SECONDS(0{} 100%{}),第一帧位置是6秒，而不是0秒
+                    * 如果设置为steps(6,end),第一帧位置是0秒。这是默认设置，也更符合常理。
+            * steps(<number\_of\_steps>, <direction>)
+
+            * The second parameter defines the point at which the action declared in our @keyframes will occur. This value is optional and will default to “end” if left unspecified.  A direction of “start” denotes a left-continuous function and our animation’s first step will be completed as soon as the animation begins. It will jump immediately to the end of the first step and stay there until the end of this step duration.
+
+            * A direction of “end” denotes a right-continuous function and directs the movement to stay put until the duration of the first step is completed. Each option essentially moves the element from a different side and will produce different positioning for the same animation.
+            * Here’s a visual:
+
+            <img src="http://刘蛟.中国/resources/CSS-Cheat-Sheet/stepsvisual.webp">
+
     * animation-delay:动画延迟
+
     * animation-iteration-count
         * infinite
         * n
@@ -740,9 +764,9 @@ transform:skew(15deg) scale(2);
         * running
         * paused
     * animation-fill-mode:动画结束后的状态
-        * none
-        * forwards:设置对象状态为动画结束时的状态
-        * backwards:动画等待的那段时间内，元素的样式将设置为动画第一帧的样式,设置 delay 即可看出
+        * none:
+        * forwards:当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。
+        * backwards:动画等待的那段时间内，在动画显示之前，应用开始属性值,元素的样式将设置为动画第一帧的样式,设置 delay 即可看出
         * both:设置对象状态为动画结束或开始的状态
         * https://www.w3cplus.com/css3/understanding-css-animation-fill-mode-property.html
 
