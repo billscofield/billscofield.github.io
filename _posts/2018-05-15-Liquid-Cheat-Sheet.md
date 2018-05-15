@@ -1,7 +1,10 @@
 ---
 layout: post
-title: "Liquid Cheat Sheet"
+title: "irssi"
+description: " ."
+categories: [Lique]
 ---
+
 
 # Liquid Cheat Sheet
 
