@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Liquid Cheat Sheet"
-description: " "
+description: "Liquid Cheat Sheet"
+excerpt_separator: ""
 ---
 {% raw %}
-
 # Liquid Cheat Sheet
 因为 Github 是 Liquid底层驱动，jekyll \_post 中的 Liquid 代码要用 raw 包裹
 ## Liquid 代码可分类
@@ -307,6 +307,7 @@ description: " "
 
 ### 数组
 1. compact: 删除数组中的所有 nil 值。
+
     ```
     {% assign site-categories = site.pages | map: 'category' | compact %}
     ```
