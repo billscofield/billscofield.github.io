@@ -2,26 +2,25 @@
 layout: post
 title: "Liquid Cheat Sheet"
 description: " "
-categories: [Liquid]
-tags: [Liquid]
-redirect_from:
-  - /2018/05/15/
-
 ---
+{% raw %}
 
 # Liquid Cheat Sheet
-
+因为 Github 是 Liquid底层驱动，jekyll \_post 中的 Liquid 代码要用 raw 包裹
 ## Liquid 代码可分类
 1. 对象（object）
     * {{ }}
 1. 标记（tag）
     * {% %}
+
     * 注释标记
         * {% comment %} {% endcomment %}
+
     * 控制流标记
         * {% if ... %} {% elsif %} {% else %}  {% endif %}
         * {% unless %} {% endunless %} 除了 == {% if != %} {% endif %}
         * {% case ...%} {% when %} {% endcase %}
+
     * 迭代/循环标记
         * {% for %} {% endfor %}
             * limit:[number]
@@ -31,8 +30,14 @@ redirect_from:
             * reversed
         * break
         * continue
+
     * 原始内容标记
-        * {% raw %} {% endraw %}
+
+    ```
+    {% raw %}
+    \{\% endraw %}
+    ```
+
     * 变量赋值标记
         * assign
         * capture
@@ -60,9 +65,9 @@ redirect_from:
 
 1. plus 加法
 
-        ```
-        {{ 4 | plus: 2 }}
-        ```
+    ```
+    {{ 4 | plus: 2 }}
+    ```
 
 1. minus 从一个数中减去另一个数。
 
@@ -137,8 +142,7 @@ redirect_from:
     ```
     {{ "now" | date: %Y-%m-%d %H:%M }}
     ```
-
-        * 上述实例输出的日期是最后一次生成当前页面的时间，并不是页面呈现给用户的时间。
+    * 上述实例输出的日期是最后一次生成当前页面的时间，并不是页面呈现给用户的时间。
     * 能够作用于包含良好格式化的日期字符串
         
         ```
@@ -500,20 +504,20 @@ redirect_from:
     * 假值（Falsy）
     * 下表总结了在 Liquid 中什么是真值什么是假值。
 
-| 真值（truthy）| 假值（falsy）
-- |:-: |-:
-true|	•| 
-false|	 |	•
-nil|	 |	•
-string      •| 
-empty string	•|
-0	•|
-integer|	•|
-float|	•|
-array|	•|
-empty array|	•|
-page|	•|
-EmptyDrop	•|
+| 真值（truthy）| 假值（falsy）|
+| - |:-: |-: |
+|true|	•| |
+|false|	 |	•|
+|nil|	 |	•|
+|string| •| |
+|empty string|	•| |
+|0	|•| |
+|integer|	•| |
+|float|	•| |
+|array|	•| |
+|empty array|	•| |
+|page|	•| |
+|EmptyDrop|	•| |
 
 ## 操作符
 1. ==	相等
@@ -544,3 +548,6 @@ Jekyll 版本的 Liquid 的文档在 <a href="https://jekyllrb.com/docs/template
 
 ## 空白符
 在 LLinux版Kodi主要面向Ubuntu开发。也有一些针对其他Linux发行版的第三方安装包。另外，还可以在安iquid 模版中，你可以将连字符放在标记（tag）中，例如 {{-、-}}、{%- 和 -%}，用于将标记（tag）渲染之后的输出内容的左侧或右侧的空拍符剔除。
+
+
+{% endraw %}
