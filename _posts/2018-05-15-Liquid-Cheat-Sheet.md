@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "irssi"
-description: " ."
-categories: [Lique]
----
+title: "Liquid Cheat Sheet"
+description: " "
+categories: [Liquid]
+tags: [Liquid]
+redirect_from:
+  - /2018/05/15/
 
+---
 
 # Liquid Cheat Sheet
 
