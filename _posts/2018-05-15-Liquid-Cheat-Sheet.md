@@ -6,6 +6,10 @@ excerpt_separator: ""
 ---
 {% raw %}
 # Liquid Cheat Sheet
+Liquid 是一门开源的模板语言，由 Shopify 创造并用 Ruby 实现。它是 Shopify 主题的骨骼，并且被用于加载店铺系统的动态内容。
+
+从 2006 年起，Liquid 就被 Shopify 所使用，现在更是被大量 web 应用所使用。
+
 因为 Github 是 Liquid底层驱动，jekyll \_post 中的 Liquid 代码要用 raw 包裹
 ## Liquid 代码可分类
 1. 对象（object）
@@ -78,7 +82,7 @@ excerpt_separator: ""
 1. divided_by
     * divided_by 返回的结果于除数是同一数据类型的，也就是说，如果除数是整数，返回的结果也是整数；如果除数是浮点数（带有小数），返回的结果也是浮点数
 
-1. modulo 返回除法运算的余数。 
+1. modulo ['mɒdjʊləʊ]返回除法运算的余数。 
         
     ```
     {{ 3 | modulo: 2}}
@@ -86,6 +90,30 @@ excerpt_separator: ""
 
 1. times: 将一个数乘以另一个数
 
+1. round 将浮点数四舍五入到最近的整数，或者，如果传入的参数是一个数值的话，将浮点数舍入到参数指定的小数位。
+
+    ```
+    {{ 1.2 | round }} -->1
+    {{ 1.26 | round:1 }} -->1.3
+    ```
+
+### 时间
+
+1. date:
+
+    * 将 "now" (或 "today") 单词传入 date 过滤器可以获取当前时间 
+    
+    ```
+    {{ "now" | date: %Y-%m-%d %H:%M }}
+    ```
+    * 上述实例输出的日期是最后一次生成当前页面的时间，并不是页面呈现给用户的时间。
+    * 能够作用于包含良好格式化的日期字符串
+        
+        ```
+        {{ "March 14, 2016" | date: "%b %d, %y" }}
+        ```
+
+### 字符串
 1. replace: 将参数中给出的第一个参数全部替换为第二个参数。
 
     ```
@@ -107,59 +135,6 @@ excerpt_separator: ""
     Take your protein pills and put my helmet on
     ```
 
-1. reverse: 将数组中的所有项的顺序反转。reverse 不能操作字符串。
-
-    ```
-    输入
-    {% assign my_array = "apples, oranges, peaches, plums" | split: ", " %}
-
-    {{ my_array | reverse | join: ", " }}
-
-    输出
-    plums, peaches, oranges, apples
-
-    reverse 不能直接应用到字符串上，但是你可以先将字符串分割成字符数组，然后再将数组反转，最后将反转之后的数组合并。
-
-    输入
-    {{ "Ground control to Major Tom." | split: "" | reverse | join: "" }}
-
-    输出
-    .moT rojaM ot lortnoc dnuor
-    ```
-
-1. round 将浮点数四舍五入到最近的整数，或者，如果传入的参数是一个数值的话，将浮点数舍入到参数指定的小数位。
-
-    ```
-    {{ 1.2 | round }} -->1
-    {{ 1.26 | round:1 }} -->1.3
-    ```
-
-### 时间
-1. date:
-
-    * 将 "now" (或 "today") 单词传入 date 过滤器可以获取当前时间 
-    
-    ```
-    {{ "now" | date: %Y-%m-%d %H:%M }}
-    ```
-    * 上述实例输出的日期是最后一次生成当前页面的时间，并不是页面呈现给用户的时间。
-    * 能够作用于包含良好格式化的日期字符串
-        
-        ```
-        {{ "March 14, 2016" | date: "%b %d, %y" }}
-        ```
-
-### 字符串
-
-1. append 将两个字符串拼接起来并返回拼接之后的值。
-
-    ```
-    {{ "/my/fancy/url" | append: ".html" }}
-
-    {% assign filename = "/index.html" %}
-    {{ "website.com" | append: filename }}
-    ```
-
 1. capitalize:将字符串首字母转为大写。
 
     ```
@@ -170,11 +145,26 @@ excerpt_separator: ""
 
 1. upcase 将字符串中的每个字符都转换为大写形式。对于已经全是大写的字符串不做任何操作
 
+1. append 将两个字符串拼接起来并返回拼接之后的值。
+
+    ```
+    {{ "/my/fancy/url" | append: ".html" }}
+
+    {% assign filename = "/index.html" %}
+    {{ "website.com" | append: filename }}
+    ```
+
 1. prepend 在一个字符串前面附加另一个字符串。
 
     ```
     输入
     {{ "apples, oranges, and bananas" | prepend: "Some fruit: " }}
+    ```
+
+1. lstrip 删除字符串左侧的所有空白符（制表符、空格和换行符）。字符串中间的所有空白符不受影响。
+
+    ```
+    {{ "          So much room for activities!          " | lstrip }}
     ```
 
 1. rstrip 将字符串右侧的所有空白字符（制表符 - tab、空格符 - space 和 回车符 - newline）删除。
@@ -274,11 +264,6 @@ excerpt_separator: ""
     {{ "Liquid" | slice: -3, 2 }}
     ```
 
-1. lstrip 删除字符串左侧的所有空白符（制表符、空格和换行符）。字符串中间的所有空白符不受影响。
-
-    ```
-    {{ "          So much room for activities!          " | lstrip }}
-    ```
 
 1. strip_html 从字符串中删除所有 HTML 标签。
 
@@ -305,7 +290,70 @@ excerpt_separator: ""
     Hellothere 
     ```
 
+1. newline_to_br 将所有换行符(\n) 替换为 HTML 的 (&lt;br&gt;) 标签。
+
+    ```
+    输入
+    {% capture string_with_newlines %}
+    Hello
+    there
+    {% endcapture %}
+
+    {{ string_with_newlines | newline_to_br }}
+
+    输出
+    <br />
+    Hello<br />
+    there<br />
+    ``` 
+
+1. url_decode 对于作为 URL 进行编码或通过 url_encode 编码的字符串进行解码。
+
+    ```
+    输入
+    {{ "%27Stop%21%27+said+Fred" | url_decode }}
+
+    输出
+    'Stop!' said Fred
+    ```
+    
+1. url_encode 将字符串中非 URL 安全的字符转换为百分号编码（percent-encoded）的字符。
+
+    ```
+    输入
+    {{ "john@liquid.com" | url_encode }}
+
+    输出
+    john%40liquid.com
+
+    输入
+    {{ "Tetsuro Takara" | url_encode }}
+
+    输出
+    Tetsuro+Takara
+    ```
+
 ### 数组
+1. reverse: 将数组中的所有项的顺序反转。reverse 不能操作字符串。
+
+    ```
+    输入
+    {% assign my_array = "apples, oranges, peaches, plums" | split: ", " %}
+
+    {{ my_array | reverse | join: ", " }}
+
+    输出
+    plums, peaches, oranges, apples
+
+    reverse 不能直接应用到字符串上，但是你可以先将字符串分割成字符数组，然后再将数组反转，最后将反转之后的数组合并。
+
+    输入
+    {{ "Ground control to Major Tom." | split: "" | reverse | join: "" }}
+
+    输出
+    .moT rojaM ot lortnoc dnuor
+    ```
+
 1. compact: 删除数组中的所有 nil 值。
 
     ```
@@ -437,49 +485,6 @@ excerpt_separator: ""
     lifestyle
     sports
     technology
-    ```
-
-1. newline_to_br 将所有换行符(\n) 替换为 HTML 的 (&lt;br&gt;) 标签。
-
-    ```
-    输入
-    {% capture string_with_newlines %}
-    Hello
-    there
-    {% endcapture %}
-
-    {{ string_with_newlines | newline_to_br }}
-
-    输出
-    <br />
-    Hello<br />
-    there<br />
-    ``` 
-
-1. url_decode 对于作为 URL 进行编码或通过 url_encode 编码的字符串进行解码。
-
-    ```
-    输入
-    {{ "%27Stop%21%27+said+Fred" | url_decode }}
-
-    输出
-    'Stop!' said Fred
-    ```
-    
-1. url_encode 将字符串中非 URL 安全的字符转换为百分号编码（percent-encoded）的字符。
-
-    ```
-    输入
-    {{ "john@liquid.com" | url_encode }}
-
-    输出
-    john%40liquid.com
-
-    输入
-    {{ "Tetsuro Takara" | url_encode }}
-
-    输出
-    Tetsuro+Takara
     ```
 
 1. default: 指定一个默认值，以防预期的值不存在。如果左侧的值为 nil、false 或空，default 将输出此默认值。
