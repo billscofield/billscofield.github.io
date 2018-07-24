@@ -542,6 +542,18 @@ function loadScript(url,fun){
     document.head.appendChild(script);
 }
 
+// window.location.search 返回查询关键字对象
+function getSearch(){
+    var searchObj = {};
+
+    var search = window.location.search;
+    var temp = search.substring(1).split('&');
+    for(var i = 0;i<temp.length;i++){
+        var temp2 = temp[i].split('=');
+        searchObj[temp2[0]] = temp2[1];
+    }
+    console.log(searchObj);
+}
 
 
 
