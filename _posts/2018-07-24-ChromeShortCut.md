@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Chrome ShortCut"
+---
+
 ## 标签页 和 窗口
 1. Ctrl + n             新窗口
 1. Ctrl + Shift + n     新建隐身窗口
