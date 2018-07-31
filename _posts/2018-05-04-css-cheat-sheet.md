@@ -7,13 +7,14 @@ tags: [CSS]
 redirect_from:
   - /2018/04/30/
 ---
+
 # CSS
 ## 定位
 * position
     * static
     * relative
         * 占据原来的空间
-     absolute
+    * absolute
         * 相对于有 position(非static) 的父元素进行定位
     * fixed
         * 相对视口进行定位
@@ -24,7 +25,9 @@ redirect_from:
     * 适用于：定位元素。即定义了position为非static的元素
     * 值越大，离用户越近，可以是负值
 * top
-    * length \| percentage
+    * length 
+    * percentage
+    * absolute是指定元素相对于最近的position值为非 static 定位祖先元素的偏移的
 * right
 * bottom
 * left
@@ -70,6 +73,7 @@ redirect_from:
                 ```
 
             * 兄弟元素垂直方向
+
         * float 与 margin 塌陷 
             * **浮动元素不会影响后续块级盒子与前面块级盒子的外边距塌陷**
 
@@ -121,6 +125,7 @@ redirect_from:
                 clear:both;
             }
             ```
+
             * 使用清除浮动属性的元素，它的外边距塌陷规则变成如下规则：
                 * 闭合浮动的盒子的border-top始终和浮动元素的margin-bottom底部重合。
                 * 而在闭合浮动的盒子的margin-top上方，直到top盒子的margin-bottom底部这段距离，就是我们所说的clearance。
@@ -179,6 +184,7 @@ redirect_from:
 
     * **指定一个元素是否可以在 "它之前的" 浮动元素旁边，或者必须向下移动(清除浮动) 在它的下面**
     * clear 属性适用于浮动 和 非浮动元素。
+
         ```
         <div class="wrap">
             <div class="box one"></div>
@@ -464,10 +470,12 @@ redirect_from:
     * each-line：定义缩进作用在块容器的第一行或者内部的每个强制换行的首行，软换行不受影响。（CSS3）
     * hanging：反向所有被缩进作用的行。（CSS3）
     * hanging和each-line关键字紧随在缩进数值之后
-```
-div{text-indent:2em each-line;}
-以上代码将使得div内部的第一行及每个强制换行的首行都拥有2em的缩进
-```
+
+        ```
+        div{text-indent:2em each-line;}
+        以上代码将使得div内部的第一行及每个强制换行的首行都拥有2em的缩进
+        ```
+
 * vertical-align
     * baseline：将支持valign特性的对象的内容与基线对齐
     * sub：垂直对齐文本的下标
@@ -612,6 +620,7 @@ div{text-indent:2em each-line;}
     * z-axis
         * 定义视图被置于 z 轴的何处
         * length
+
     ```
     transform-origin:left top;
     ```
@@ -627,6 +636,7 @@ div{text-indent:2em each-line;}
     * none：不指定透视
     * length：指定观察者距离「z=0」平面的距离，为元素及其内容应用透视变换。不允许负值
     * 一般写在祖先标签上 或 父标签上
+
 ```
 两种
 1. 写在祖先标签上 或 父标签上
@@ -638,7 +648,7 @@ transform:perspective(2000px);
 * 不同点
     1. 父元素下面有很多变换的元素时，各不相同
     1. 都相同
-
+```
 
 * perspective-origin:指定观察者在哪个位置进行观看（x轴，y轴)
     * left、center、right、length和%
@@ -810,7 +820,6 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ## 选择器
-### 各种选择器
 1. ID
     * \#id-name{}
 1. Class
@@ -831,6 +840,7 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
     * E:active
     * E:focus
     * E:not(s):匹配不含有s选择符的元素E。
+
     ``` 
     li:not(:last-child) {
         border-bottom: 1px solid #ddd;
@@ -840,6 +850,7 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
     p:not(.first-graph){
     }
     ```
+
     * E:first-child
         * 匹配父元素的第一个子元素E。**E必须是它的兄弟元素中的第一个元素**
         * E的父元素最高是body，即E可以是body的子元素
@@ -850,6 +861,7 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
     * E:first-of-type
         * 匹配同类型中的 第一个同级兄弟元素E。
         * E的父元素最高是html，即E可以是html的子元素
+
     * E:last-of-type
     * E:only-of-type
     * E:nth-of-type(n)
@@ -861,6 +873,7 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
 
 1. 标签
     * E{}
+
 1. 伪元素
     * E::first-letter
     * E::first-line
@@ -870,18 +883,25 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
         * 伪元素是 行级元素
     * E::placeholder
     * E::selection
+
 1. 通配符:\*
+
 1. 父子选择器
     * f s{}
     * 空格分隔
+
 1. 直接子元素选择器
-    * div &gt;ul&gt;li{}
+    * div &gt;ul &gt;li{}
+
 1. 并列选择器
     * a.class-name{} 
+
 1. 分组选择器
     * ","分隔 
+
 1. 相邻选择符(E+F):选择紧贴在E元素之后的那"一个" F 元素
     * 只选择一个,不论 E 后面有几个连续的 F 
+
 1. 兄弟选择符(E~F):选择E元素后面的所有兄弟元素F
     * 不论相邻与否，只要和 E 同级，F 同类
 
@@ -890,11 +910,11 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
 |选择器|权重|
 |:-:|:-|
 |!important|Infinity|
-|行间|1000|
-|ID|100|
-|class、属性、伪类| 10|
-|标签选择器|1|
-|通配符|0|
+|行间|1.0.0.0|
+|ID|0.1.0.0|
+|class、属性、伪类| 0.0.1.0|
+|标签选择器|0.0.0.1|
+|通配符|0.0.0.0|
 
 * 注意
     1. !important 要写在每一个属性的后边。
@@ -917,6 +937,18 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
 
     1. FFC
 
+## 单位
+* <a href='http://pxtoem.com/'>PXtoEM</a>
+* px
+    * px 是直接设置像素大小
+* em
+    * em 是相对于父级元素的字体大小
+* %
+* rem
+    * rem 是相对于根元素的字体大小
+* vh
+* vw
+* vm
 
 
 ### 具体实例
@@ -944,7 +976,6 @@ div{
     margin-top:一半;
 }
 ```
-
 
 
 
