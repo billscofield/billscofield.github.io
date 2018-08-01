@@ -9,6 +9,9 @@ redirect_from:
 ---
 
 # CSS
+## 引入
+1. @import
+    * 影响页面的下载速度和呈现速度
 ## 定位
 * position
     * static
@@ -820,6 +823,13 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
 ## 选择器
+* 层叠的原则
+    * 特殊性(specificity)
+        * 指定选择器的具体程度
+    * 顺序(order)
+    * 重要性(importance)
+        * !important;
+
 1. ID
     * \#id-name{}
 1. Class
@@ -976,14 +986,3 @@ div{
     margin-top:一半;
 }
 ```
-
-
-
-
-
-
-
-
-
-
-

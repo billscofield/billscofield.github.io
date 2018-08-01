@@ -40,6 +40,8 @@ title: "Chrome ShortCut"
 1. Shift + F6              地址栏、书签栏（如果有）、页面内容 之间向后切换焦点
  
 1. Ctrl + Shift + i        开发者工具
+    * undock into separate window
+
 1. Ctrl + Shift + Delete   清除浏览数据
 
 ## 地址栏快捷键
