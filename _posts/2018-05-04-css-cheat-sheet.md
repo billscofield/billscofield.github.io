@@ -8,10 +8,10 @@ redirect_from:
   - /2018/04/30/
 ---
 
-# CSS
 ## 引入
 1. @import
     * 影响页面的下载速度和呈现速度
+
 ## 定位
 * position
     * static
@@ -940,7 +940,7 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
         * float
         * overflow:hidden
         * 思考
-            * absolute 和 float 在user agent处都是inline-block,这是浏览器厂商的原因，而absolute float 成为BFC是CSS协会的原因。但是也可能和浏览器厂商有关系？？？
+            * absolute 和 float 在user agent处都是inline-block,这是浏览器厂商的原因，而absolute float 成为BFC是CSS协会的原因。但是也可能和浏览器厂商有关系???
     1. Inline Formatting Context
 
     1. GFC
@@ -963,6 +963,7 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
 
 ### 具体实例
 1. 单行文本溢出
+
 ```
 div.one{
     width:100px;
@@ -977,6 +978,7 @@ div.one:hover{
 ```
 
 1. 水平垂直居中
+
 ```
 div{
     position:absolute;
