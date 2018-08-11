@@ -22,7 +22,8 @@ redirect_from:
     * fixed
         * 相对视口进行定位
     * 注意
-        * 凡是 position:absolute \|\| float:left/right 的元素，display 就转换成了 inline-block,即使显示地设置为:display:block/inline 也无效
+        * 凡是 position:absolute \|\| float:left/right 的元素，display 就转换成了 block
+
 * z-index
     * auto
     * 适用于：定位元素。即定义了position为非static的元素
@@ -47,6 +48,15 @@ redirect_from:
         * 如果 inline-block 元素内有文字，则和 inline-block 内的文本 对齐
     1. list-item
     1. table
+        * display:table
+        * **table-layout 表格布局**
+            * fixed 在固定表格布局中，水平布局仅取决于表格宽度、列宽度、表格边框宽度、单元格间距，**而与单元格的内容无关。**
+                * 通过使用固定表格布局，用户代理在接收到第一行后就可以显示表格。
+                * 列宽由表格宽度和列宽度设定。
+            * auto(default) 在自动表格布局中，**列的宽度是由列单元格中没有折行的最宽的内容设定的。**
+                * 此算法有时会较慢，这是由于它需要在确定最终的布局之前访问表格中所有的内容。
+                * 列宽度由单元格内容设定。
+
     1. flex
     1. inline-flex
     1. **注意**
@@ -54,68 +64,8 @@ redirect_from:
             * 内容决定大小
             * CSS 能否控制 width/height
 
-        * Margin塌陷
-            * 父子元素之间
-                * border-top
-                * BFC
-
-                ```
-                .father{
-                    width: 200px;
-                    background:#00ff0044;
-                    /* border-top:1px solid green; 不可以是0 */
-                    /* padding-top:1px; 不可以是0 */
-                }   
-                .son{
-                    width: 100px;
-                    height: 100px;
-                    background:#ff000044;
-                    margin-top:100px;
-                }   
-
-                ```
-
-            * 兄弟元素垂直方向
-
         * float 与 margin 塌陷 
             * **浮动元素不会影响后续块级盒子与前面块级盒子的外边距塌陷**
-
-            ```
-                <div class="wrap">
-                    <div class="top box"></div>
-                    <div class="float"></div>
-                    <div class="bottom box"></div>
-                </div>
-
-                .wrap{
-                    margin:50px;
-                    width:150px;
-                    background:#ccc;
-                    overflow:hidden;
-                }
-                .box{
-                    width: 100px;
-                    height: 100px;
-                }
-
-                .top{
-                    background:#ff000088;
-                    margin-bottom:50px;
-                }
-                .float{
-                    float:left;
-                    width: 90px;
-                    height: 10px;
-                    background:#ffff0099;
-                    /* margin-top:50px; */
-                    /* margin-bottom:20px; */
-                }
-                .bottom{
-                    background:#00ff0088;
-                    margin-top:20px;
-                }
-
-            ```
 
             * **clearance(闭合浮动)**
 
@@ -140,7 +90,7 @@ redirect_from:
 
                 * **如果clearance的值⼤于0，两个元素就不会发⽣margin collapse**
 
-* float
+* float(图文混排)
     * none
     * left
     * right
@@ -149,25 +99,6 @@ redirect_from:
             * 普通块级元素看不到它们
             * BFC元素可以看到它们
             * 文本类元素可以看到它们
-        * 凡是 position:absolute\|\| float:left/right 的元素，display 就转换成了 inline-block,即使显示地设置为:display:block/inline 也无效
-
-        ```
-        <style>
-            .float{
-                float:left;
-                width:100px;
-                height:100px;
-            }
-            .bfc{
-                width:150px;
-                height:150px;
-                opacity:0.8;
-                overflow:hidden;
-            }
-        </style>
-        <div class="float"></div>
-        <div class="bfc"></div>
-        ```
 
 * clear
     * none
@@ -188,48 +119,12 @@ redirect_from:
     * **指定一个元素是否可以在 "它之前的" 浮动元素旁边，或者必须向下移动(清除浮动) 在它的下面**
     * clear 属性适用于浮动 和 非浮动元素。
 
-        ```
-        <div class="wrap">
-            <div class="box one"></div>
-            <div class="box two"></div>
-            <div class="box three"></div>
-            <div class="box four"></div>
-        </div>
-    
-        .wrap{
-            overflow:hidden;
-        }
-
-        .box{
-            width: 100px;
-            height: 100px;
-        }
-        .one{
-            background:#f00;
-            float:left;
-        }
-        .two{
-            background:#0f0;
-            float:right;
-            /* clear:right; */
-        }
-        .three{
-            background:#00f;
-            float:right;
-            clear:right;
-        }
-
-        .four{
-            background:#ff0;
-            float:left;
-        }
-        ```
-
     * clear:left/right的际⽤ ---> <a href="http://www.zhangxinxu.com/wordpress/2014/06/understand-css-clear-left-right-and-use/">垂直环绕布局</a>
 
         <img src="http://www.刘蛟.中国/images/html/clear.left.right实际用途.png">
 
         “头像img”和“姓”放在同⼀父级容器中，⽽这个父级容器左浮动；右侧的信息元素浮动跟随（⾃适应布局）,这是业界的主流做法，实际上，头像、姓、⾃我描述应该是平级的兄弟N系。从语义来看，貌似“头像、姓”硬⽣⽣变成⼉⼦和⼉是不妥的吧~~
+
     ```
         <div class="wrap">
             <div class="box one"></div>
@@ -248,7 +143,6 @@ redirect_from:
         }
         .two{
             clear:left;
-
         }
         .three{
             margin-left:120px;
@@ -289,6 +183,11 @@ redirect_from:
 
 ## 外补白
 * margin
+    * 默认为 0
+    * 对齐
+        * 左对齐：margin-right:auto;
+        * 右对齐：margin-left:auto;
+        * 居中：margin: 0 auto;
 * margin-top
 * margin-right
 * margin-bottom
@@ -304,7 +203,7 @@ redirect_from:
 ## 边框
 * border:&lt;line-width&gt; \|\| &lt;line-style&gt; \|\| &lt;color&gt;
     * border-width: &lt;length&gt; \| thin \| medium \| thick
-    * border-style:none \| hidden \| dotted \| dashed \| solid \| double \| groove \| ridge \| inset \| outset
+    * border-style:none(default) \| hidden \| dotted \| dashed \| solid \| double \| groove \| ridge \| inset \| outset
     * border-color
 * border-top
 * border-right
@@ -364,7 +263,7 @@ redirect_from:
         * border-box	背景图像相对于边框盒来定位。
         * content-box	背景图像相对于内容框来定位。
     * background-clip:规定背景的绘制区域
-        * border-box	背景被裁剪到边框盒。
+        * border-box	背景被裁剪到边框盒。(default)
         * padding-box	背景被裁剪到内边距框。
         * content-box	背景被裁剪到内容框。
     * background-size
@@ -480,6 +379,7 @@ redirect_from:
         ```
 
 * vertical-align
+    * 设置元素的垂直对齐方式, 不应该放在父元素上
     * baseline：将支持valign特性的对象的内容与基线对齐
     * sub：垂直对齐文本的下标
     * super：垂直对齐文本的上标
@@ -559,16 +459,22 @@ redirect_from:
 
 ## 用户界面
 * appearance
+
 * text-overflow
     * clip	修剪文本。(截取)
     * ellipsis	显示省略符号来代表被修剪的文本。
+
 * outline:outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用,轮廓线不会占据空间，也不一定是矩形。
     * outline-width
     * outline-style
     * outline-color
     * outline-offset:outline-offset是以border边界作为参考点的，从0开始，正值从border边界往外延，负值从border边界往里缩
+    * 一般用于表单元素，如 input
+
 * cursor:规定要显示的光标的类型（形状）
+
 * zoom:设置或检索对象的缩放比例。
+
 * box-sizing
     * content-box
     * border-box

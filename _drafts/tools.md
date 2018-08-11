@@ -17,3 +17,36 @@
 * r / R：旋转（顺时针/逆时针）
 * ESC / q：退出
 
+## SMPlayer(Qt)
+
+## glances (glance[glɑ:ns] 一瞥)
+* 一款资源监视工具，可以监视内存，cpu等资源占用情况，功能要比top命令要强大得多
+    * 安装：sudo apt-get install glances
+
+## cmus 命令行音乐播放器 C Music Player
+* https://cmus.github.io/
+### 常用功能
+* 添加文件
+    * :add ~/Music
+* 播放
+    * x
+* 清空播放列表
+    * :clear
+* 下一首
+    * b
+* 上一首
+    * z
+* stop
+    * v
+* 暂停
+    * c
+* 音量
+    * 加 ]
+    * 减 [
+* 展开
+    * 空格
+
+##  启动栏：Docky
+* 一款很像OS X的启动栏，把系统启动栏自动隐藏，然后使用这个启动栏，会很像MAC一样。支持自动隐藏、透明、调整图标大小等。
+
+## TeamViewer
