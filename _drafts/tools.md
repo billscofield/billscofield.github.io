@@ -1,9 +1,17 @@
+---
+layout: post
+title: My Ubuntu and Tools Recommend
+redirect_from:
+    - /2018/08/11/
+---
+
 ## fim 用终端打开图片
 * https://my.oschina.net/ssdlinux/blog/1825580
 * 与大多数 GUI 图片浏览器相比，它非常轻巧。
 * FIM 意即 Fbi IMproved。对于那些不知道的人，Fbi 是指 Linux 中的 frame buffer imageviewer。它使用系统的帧缓冲器直接从命令行显示图像。默认情况下，它能用终端显示 bmp、gif、jpeg、PhotoCD、png、ppm、tiff 和 xwd。对于其他格式，它会尝试使用 ImageMagick 的转换。
 * FIM 基于 Fbi，它是一款高度可高度定制及脚本化的图像浏览器，非常适合使用 Vim 文本编辑器或 Mutt 等软件的用户。
 * sudo apt-get install fim
+
 ### 快捷键
 * PageUp / Down：上一张/下一张图片
 * + / - ：放大/缩小
@@ -25,6 +33,7 @@
 
 ## cmus 命令行音乐播放器 C Music Player
 * https://cmus.github.io/
+
 ### 常用功能
 * 添加文件
     * :add ~/Music
@@ -50,3 +59,11 @@
 * 一款很像OS X的启动栏，把系统启动栏自动隐藏，然后使用这个启动栏，会很像MAC一样。支持自动隐藏、透明、调整图标大小等。
 
 ## TeamViewer
+
+
+## 图片外链网站
+* <a href='http://www.tietuku.com/'>贴图库</a>
+    * 根据官网介绍，“为用户提供无限空间、无限流量、无限数量的图片存储服务”，并且第一次使用时感觉很好，所以向大家推荐
+
+
+
