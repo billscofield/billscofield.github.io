@@ -1,3 +1,7 @@
+---
+layout: post
+title: 前端练习和知识点
+---
 # Frontend Practice
 
 ## HTML CSS
