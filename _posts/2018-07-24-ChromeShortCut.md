@@ -3,6 +3,12 @@ layout: post
 title: "Chrome ShortCut"
 ---
 
+## chromium 无法安装扩展
+1. 终端输入以下命令启动
+    * chromium-browser --enable-easy-off-store-extension-install
+1. 地址栏输入
+    * chrome://extensions/
+打开开发者模式，把扩展拖进去
 ## 标签页 和 窗口
 1. Ctrl + n             新窗口
 1. Ctrl + Shift + n     新建隐身窗口
