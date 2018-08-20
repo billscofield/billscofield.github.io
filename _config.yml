@@ -16,7 +16,7 @@
 title: Bill's Blog
 email: billscofield@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-    不悟不成佛，不疯不成魔 <a href='https://codeopen.io/billscofield'>codepen</a>
+    不悟不成佛，不疯不成魔 https://codeopen.io/billscofield
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
