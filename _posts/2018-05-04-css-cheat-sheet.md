@@ -35,9 +35,26 @@ redirect_from:
 * right
 * bottom
 * left
+
 * clip
-    * auto:对象无剪切
+    * auto:对象无剪切，这个属性好像是废弃了
     * rect(number\|auto number\|auto number\|auto number\|auto)：依据上-右-下-左的顺序提供自对象左上角为(0,0)坐标计算的四个偏移数值，其中任一数值都可用auto替换，即此边不剪切。
+    * 他们之间需要用逗号隔开
+    * clip属性只能在元素设置了“position:absolute”或者“position:fixed”属性起作用著作权归作者所有。
+    * top 和 bottom 的值定义的都是距离顶部边界的偏移量，而 left 和 rigjt 的值定义的都是距离左边界的偏移量。 
+    * img 还是那么大，只是只显示指定的区域，top left 的作用和没有clip时一致
+    
+    * 一个典型的应用
+
+    ```
+    img 
+    {
+        position:absolute;
+        clip:rect(100px,200px,300px,0px);
+    }
+    
+    <img src="./tennis.jpg" alt="">
+    ```
 
 ## 布局
 * display
@@ -350,25 +367,31 @@ redirect_from:
     * CSS3中将 &lt;word-wrap&gt; 改名为 &lt;overflow-wrap&gt;；由于历史原因，当你使用 &lt; overflow-wrap &gt; 时，最好同时使用 &lt; word-wrap &gt; 作为备选，作向前兼容。
 
 * text-align
-    * left	把文本排列到左边。默认值：由浏览器决定。
-    * right	把文本排列到右边。
+    * left	    把文本排列到左边。默认值：由浏览器决定。
+    * right	    把文本排列到右边。
     * center	把文本排列到中间。
     * justify	实现两端对齐文本效果。
     * inherit	规定应该从父元素继承 text-align 属性的值。
-    * start：内容对齐开始边界。（CSS3）
-    * end：内容对齐结束边界。（CSS3）
+    * start     内容对齐开始边界。（CSS3）
+    * end       内容对齐结束边界。（CSS3）
+    * text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐
+    * 用于父标签
+
 * text-align-last:设置或检索一个块内的最后一行（包括块内仅有一行文本的情况，这时既是第一行也是最后一行）或者被强制打断的行的对齐方式
+
 * word-spacing
     * normal：默认间隔
-    * &lt;length&gt;：用长度值指定间隔。可以为负值。
-    * &lt;percentage&gt;：用百分比指定间隔。可以为负值。（CSS3）
+    * length：用长度值指定间隔。可以为负值。
+    * percentage：用百分比指定间隔。可以为负值。（CSS3）
+
 * letter-spacing
     * normal：默认间隔
-    * &lt;length&gt;：用长度值指定间隔。可以为负值。
-    * &lt;percentage&gt;：用百分比指定间隔。可以为负值。（CSS3）
+    * length：用长度值指定间隔。可以为负值。
+    * percentage：用百分比指定间隔。可以为负值。（CSS3）
+
 * text-indent:文本块中首行文本的缩进
-    * &lt;length&gt;：用长度值指定文本的缩进。可以为负值。
-    * &lt;percentage&gt;：用百分比指定文本的缩进。可以为负值。
+    * length：用长度值指定文本的缩进。可以为负值。
+    * percentage：用百分比指定文本的缩进。可以为负值。
     * each-line：定义缩进作用在块容器的第一行或者内部的每个强制换行的首行，软换行不受影响。（CSS3）
     * hanging：反向所有被缩进作用的行。（CSS3）
     * hanging和each-line关键字紧随在缩进数值之后
@@ -379,18 +402,25 @@ redirect_from:
         ```
 
 * vertical-align
-    * 设置元素的垂直对齐方式, 不应该放在父元素上
+    * 设置元素的垂直对齐方式, **不应该放在父元素上，而是放在目标元素上**
     * baseline：将支持valign特性的对象的内容与基线对齐
     * sub：垂直对齐文本的下标
     * super：垂直对齐文本的上标
     * top：将支持valign特性的对象的内容与对象顶端对齐
     * text-top：将支持valign特性的对象的文本与对象顶端对齐
     * middle：将支持valign特性的对象的内容与对象中部对齐
+        * vertical-align:middle属性的表现与否，仅仅与其父标签有关，至于我们通常看到的与后面的文字垂直居中显示那都是假象！
     * bottom：将支持valign特性的对象的文本与对象底端对齐
     * text-bottom：将支持valign特性的对象的文本与对象顶端对齐
     * percentage：用百分比指定由基线算起的偏移量。可以为负值。基线对于百分数来说就是0%。
+        * vertical-align的百分比值不是相对于字体大小或者其他什么属性计算的，而是相对于line-height计算的
     * length：用长度值指定由基线算起的偏移量。可以为负值。基线对于数值来说为0。（CSS2）
+
+    * **将行框内的内联元素统一一条线对齐(内联元素都有4条线，顶中基底)**
+    * **一般放在比较特别的元素上，比如 img**
+
 * line-height
+
 * text-size-adjust
 
 ## 文本装饰
@@ -478,6 +508,19 @@ redirect_from:
 * box-sizing
     * content-box
     * border-box
+
+## 替换元素
+1. object-fit
+    1. fill
+        * 被替换的内容大小可以填充元素的内容框。 整个对象将完全填充此框。 如果对象的高宽比不匹配其框的宽高比，那么该对象将被拉伸以适应。
+    1. contain
+        * 被替换的内容将被缩放，以在填充元素的内容框时保持其宽高比。 整个对象在填充盒子的同时保留其长宽比，因此如果宽高比与框的宽高比不匹配，该对象将被添加“黑边”。
+    1. cover
+        * 被替换的内容大小保持其宽高比，同时填充元素的整个内容框。 如果对象的宽高比与盒子的宽高比不匹配，该对象将被剪裁以适应。
+    1. none
+        * 被替换的内容尺寸不会被改变。
+    1. scale-down
+        * 内容的尺寸就像是指定了none或contain，取决于哪一个将导致更小的对象尺寸。
 
 ## 动画 Animation
 ### Transform 变形2D
@@ -603,7 +646,7 @@ transform:skew(15deg) scale(2);
     * transition-property:检索或设置对象中的参与过渡的属性
         * none：不指定过渡的css属性
         * all：所有可以进行过渡的css属性
-        * &lt;IDENT&gt;：指定要进行过渡的css属性
+        * IDENT：指定要进行过渡的css属性
     * transition-duration
     * transition-timing-function
         * linear：线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0)

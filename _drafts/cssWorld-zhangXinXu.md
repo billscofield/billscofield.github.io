@@ -1,4 +1,5 @@
-# 
+#  CSS World
+
 鑫三无:无宽度，无浮动，无图片
 
 * 块级元素 和 display 为 block 的元素不是一个概念，例如 li display 是 list-item, table display是 table, 但它们均是块级元素，即符合**块计元素的基本特征：一个水平流上只能单独显示一个元素，多个块级元素则换行显示**
@@ -6,36 +7,35 @@
 * 内联元素 和 display 为 inline 的元素不是一个概念， 例如 inline-block 和 inline-table 都是内联元素，因为它们的 "外在盒子" 都是内联元素
 
 ## 流
-* 图文信息展示
-    * CSS 世界的诞生就是为 图文信息展示 服务的
-* 流
-    * 一种基本的 定位 和 布局 机制, 可以理解为现实世界的一套物理规则，同现实世界的 "水流" 有异曲同工的表现
+* CSS 世界的诞生就是为**图文信息展示**服务的。
+
+* 一种基本的定位和布局机制，可以理解为现实世界的一套物理规则，同现实世界的 “水流” 有异曲同工的表现
 
 * HTML是CSS世界的基石
-    * div 和 span 正是 CSS世界中 块级元素 和 内联级元素的代表，它们对应盛水容器中的 水 和 木头
-    
+    * div 和 span 正是 CSS世界中块级元素和内联级元素的代表，它们对应盛水容器中的水和木头。
+
 * 流体布局
-    * 利用 "流" 本身具有自适应的特性
-    * 流体布局 要比 自适应布局狭隘的多，例如表格布局也可设置为100%自适应，但是不一样的，并不属于流体布局
-    * table 是HTML，要比 CSS 出现的早得多
+    * 利用“流”本身具有自适应的特性。
+    * 流体布局 要比 自适应布局狭隘的多，例如表格布局也可设置为100%自适应，但是不一样的，并不属于流体布局。
+    * table 是 HTML，要比 CSS 出现的早得多
 
 ## 术语和概念
 * number + 长度单位 = length
-    * 100% 不是流体，而是具体值
+    * 100% 不是流体，而是具体值。
 
 * 长度单位
     * 相对"字体"长度单位
-        * em, ex, rem, ch(字符0的宽度)
+        * em, ex, rem, ch(字符零的宽度)
     * 相对"视区"长度单位
         * vh, vw, vmin, vmax
 
 * 未定义行为
-    * spec 也不可能是面面俱到的，也会存在规范描述以外的场景，不同厂家不同的理解，就是未定义行为
+    * spec 也不可能是面面俱到的，也会存在规范描述以外的场景，不同厂家不同的理解，就是未定义行为。
 
 * 功能符
     * 值以函数形式指定
         * url()
-        * calc(100%-20)
+        * calc(100%-20px)
         * rgba(0,0,0,.5)
         * attr('href')
         * scale(-1)
@@ -43,24 +43,23 @@
 ## 流、元素和基本尺寸
 * 几种盒子
     * 元年
-        * 只有 block-level box 和 inline box, 块级盒子负责结构，内联盒子负责内容
+        * 只有 block-level box 和 inline box, 块级盒子负责结构，内联盒子负责内容。
     * list-item 出现
         * list-item 有两个盒子
-        * 命名为 "附加盒子(标记盒子 marker box)"好了，外面的那个 就叫 "主块级盒子"
+        * 命名为 “附加盒子(标记盒子 marker box)” 好了，外面的那个就叫 “主块级盒子”
     * display:inline-block 出现
         * inline-block 有两个盒子
         * 命名为 "外在盒子" 和 "内在盒子(容器盒子)"
-        * 外在盒子负责元素是可以一行显示，还是只能换行显示
-        * 内在盒子负责 宽高、内容呈现
+        * 外在盒子负责元素是可以一行显示，还是只能换行显示。
+        * 内在盒子负责 宽高、内容呈现。
         * 以此类推
-            * inline 的元素内外均是 内连盒子;
-            * block 的元素内外均是 块级盒子
+            * inline 的元素内外均是内连盒子;
+            * block 的元素内外均是块级盒子
             * table 的元素是 block-table
 
 * 深藏不漏的 width:auto
 
     1. 充分利用可用空间
-
     1. 收缩与包裹(shrink to fit)
         1. **absolute/fixed**
             * 有一种情况下是由外部尺寸决定，即非替换元素left/right,top/bottom 对立属性同时出现时
@@ -68,20 +67,19 @@
         1. float
         1. table元素
             * 有 display:table
-
     1. 收缩到最小(针对表格table-layout:auto) min-content
         * 最容易出现在 table-layout 为 auto 的表格中
         * white-space:nowrap;
         * 首选最小宽度
-
     1. 超出容器限制
         * 除非有明确的 width 设置，上述 3 种情况尺寸一般不会主动超过父级容器限制
         * 特殊情况
             1. 内容很长的英文和数字(没有中文), 
             1. white-space:nowrap, 
+    1. 上面 4 个，第一个是外部尺寸，其余 3 个是内部尺寸, 这唯一的外部尺寸 是 '流'的精髓所在。
+        1. input type='button' 默认的 white-space:nowrap
+        1. button 标签 默认的 white-space:normal
 
-    1. 上面 4 个，第一个是外部尺寸，其余 3 个是内部尺寸, 这唯一的外部尺寸 是 '流'的精髓所在
-    
 ## 内部尺寸，外部尺寸
 1. 内在盒子，外在盒子
 1. 内部显示，外部显示
@@ -89,34 +87,34 @@
     * 内部尺寸:尺寸由内部元素决定
     * 外部尺寸:尺寸由外部元素决定
 
-1. 块级元素的流体特性就是体现在里面的 '容器盒子' 上的，CSS3 用了另外一个词来表示这个内在盒子，就是 flow. 因此 display:block 更规范的脑补应该是 display:block flow
+1. 块级元素的流体特性就是体现在里面的 “容器盒子” 上的，CSS3 用了另外一个词来表示这个内在盒子，就是 flow. 因此 display:block 更规范的脑补应该是 display:block flow
 
-1. 表现为外部尺寸的块级元素一旦设置了宽度，就失去了流动性
+1. 表现为外部尺寸的块级元素一旦设置了宽度，就失去了流动性。
 
 ### 外部尺寸与流体特性
 * 正常流宽度
-* 格式化*宽度*
+* **格式化宽度**
     * 格式化宽度仅在 absolute/fixed 中出现，即包裹性中的特殊情况，由外部尺寸决定
-    * 格式化宽度 具有完全的流动性，即 margin,padding,border,content 自动分配水平(垂直)空间
-    * 对于“非替换元素”，当top/left,bottom/right 对立方位的属性值同时存在的时候，元素的宽度表现为 **格式化宽度(没有格式化高度，高度有差异)**，其宽度相对于最近的具有定位特性的祖先元素计算
+    * **格式化宽度具有完全的流动性**，即 margin,padding,border,content 自动分配水平(垂直)空间
+    * 对于 “非替换元素”，当top/left,bottom/right 对立方位的属性值同时存在的时候，元素的宽度表现为 **格式化宽度(没有格式化高度，高度有差异)**，其宽度相对于最近的具有定位特性的祖先元素计算
 
     * 注意
-        * 对于图片 chrome,ff 都是没问题,原始大小
-        * 对于 textarea/(input type='search')/(input type='input')/type='password' chrome top/left/bottom/right 都为零，高度会100%， ff 则保持原始大小
+        * 对于图片 chrome,FF 都是没问题,原始大小
+        * 对于 textarea/(input type='search')/(input type='input')/type='password' chrome top/left/bottom/right 都为零，高度会100%， FF 则保持原始大小
             * type='image'/type='file' 都是原始大小
             * type='reset'/type='submit' height都是100%
 
 ### 内部尺寸与流体特性
 * 就是元素的尺寸由内部元素决定
-    * 例如，一个元素没有内容，宽度就是0，那就是应用的内部尺寸
+    * 例如，一个元素没有内容，宽度就是0，那就是应用的内部尺寸。
 
 * 内部尺寸有3中表现形式
     1. 包裹性，自适应性
-        * 自适应性：**元素尺寸由内部元素决定，但永远小于“包含块”容器的尺寸（除非容器尺寸小于元素的 "首选最小宽度"),就好像 “包裹性”元素冥冥中有个 max-width:100% 的感觉**
+        * 自适应性：**元素尺寸由内部元素决定，但永远小于“包含块”容器的尺寸（除非容器尺寸小于元素的 "首选最小宽度"),就好像 “包裹性” 元素冥冥中有个 max-width:100% 的感觉**
             * button :white-space:normal
             * input button : white-space:pre
                 * 其他的都是 normal
-        * **除非 首选最小宽度 比容器宽度还大，否则不用担心会破坏了布局**
+        * **除非首选最小宽度比容器宽度还大，否则不用担心会破坏了布局**
 
     1. 首选最小宽度:元素最适合的最小宽度
         * width为0，图片和文字的宽度不为0, **图片和文字的权重要远大于布局**
@@ -149,7 +147,7 @@
     * width:具体值，导致流动性丢失
     * 作用于 content 导致与现实世界表现不一致
         * 比如房子
-    * 解决方式就是 “宽度分离原则”
+    * 解决方式就是 **“宽度分离原则”**
 
 ### 宽度分离原则
 * 就是 CSS 中的 width 不与影响宽度的 margin,border,padding 属性共存
@@ -173,11 +171,11 @@
 
     * 正确用法
 
-        ```
+        ```css
         input,textarea,img,video,objct{
             box-sizing:border-box;
         }
-        这些元素 默认都是 content-box
+        /*这些元素默认都是 content-box*/
         ```
 
 * height:auto width:100%;
@@ -190,7 +188,7 @@
 * height:100%
     1. 设定显式的高度值
 
-        ```
+        ```css
         html,body{
             height:100%;
         }
@@ -199,7 +197,7 @@
     1. 使用绝对定位
         * 即使祖先元素的height为auto也可以
 
-        ```
+        ```css
         div{
             height:100%;
             position:absolute;
@@ -207,8 +205,8 @@
         ```
 
     1. **注意**
-        * **(不论box-sizing)绝对定位的"宽高"百分比 是相对于具有定位祖先的 padding-box 计算的(不论祖先的box-sizing)**
-        * **非绝对定位 元素的widt/height 总是相对于父元素的 content-box(不论 box-sizing) 计算的**
+        * **(不论box-sizing)绝对定位的"宽高"百分比都是相对于具有定位的祖先元素的 padding-box 计算的(不论祖先的box-sizing)**
+        * **非绝对定位元素的widt/height 总是相对于父元素的 content-box(不论 box-sizing) 计算的**
 
 ### 为流体而生的 min-width/max-width
 * width/height 的初始值是 auto
@@ -230,10 +228,10 @@
     * max-height 不能小于 min-height, 否则 max-height 失效
     * height 不能大于 max-height, 否则 height 失效
 
-* max-width: 100%;*100% 会被解析为容器（.picture） 的边长, rotate 时候要计算*
+* max-width: 100%;100% 会被解析为容器（.picture） 的边长, rotate 时候要计算
 
 ### 内联元素
-* 内联元素的内联特指外在盒子 和 display 为 inline 的元素不是一个概念， 例如 inline-block 和 inline-table 都是内联元素，因为它们的 "外在盒子" 都是内联元素
+* 内联元素的内联特指外在盒子，和 display 为 inline 的元素不是一个概念， 例如 inline-block 和 inline-table 都是内联元素，因为它们的 "外在盒子" 都是内联元素
 
 #### 内联盒模型
 1. 内容区域：我们可以把文本选中的背景色区域作为内容区域,内容区域并没有明确定义
@@ -250,8 +248,11 @@
     * p 标签就是一个包含盒子
 
 #### 幽灵空白节点 strut
-    * 必须是 HTML5 文档声明
-    * **存在于每一个 行框盒子前面，同时具有当前行框所在包含块所属 元素的“文字”和“行高”属性的 0 宽度的内联盒子(高度表现为行高值，行高是纯数字的话，要用到公式font-size*line-height)**
+* 必须是 HTML5 文档声明
+* **存在于每一个 行框盒子前面，同时具有当前行框所在包含块所属 元素的“文字”和“行高”属性的 0 宽度的内联盒子(高度表现为行高值，行高是纯数字的话，要用到公式font-size*line-height)**
+* 如何让 strut 起作用
+    * 子元素本身是display:inline-block
+    * 子元素具有 padding-left 或者 padding-right 不为 0 (padding:0 0.1px 都可以)
 
 ## 盒尺寸四大家族
 * 替换元素
@@ -288,18 +289,19 @@
 ## padding
 * 设置了 box-sizing:border-box, 元素尺寸就不会变化了? too yong too simple 
     * 只要 padding 设置的足够大，元素尺寸依旧会变化(width无能为力)
-    
-        ```
-        <div class='one'>你好</div>
 
+        ```css
+        <div class='one'>你好</div>
+        
         div.one{
             width: 20px;
             padding: 20px 80px;
             background-color:#f00;
             box-sizing:border-box;
         }
-        元素width 表现为 160px; 而width 无效(归零)，里面的内容表现为“首选最小宽度”
+        /*元素width 表现为 160px; 而width 无效(归零)，里面的内容表现为“首选最小宽度”*/
         ```
+
 * padding 同样会影响内联元素垂直方向布局，影响视觉表现,只是因为内联元素没有 可视宽度,可视高度的说法(clientWidth,clientHeight 永远为0),**垂直方向上的行为完全受 line-height 和 vertical-align 的影响，视觉上并没有改变上一行下一行内容的间距，因此我们觉得垂直方向 padding 没有起作用**
 
 * 还有很多**不影响其他元素布局**而是出现层叠效果的现象
@@ -315,8 +317,8 @@
 * 内联元素垂直方向padding的用法
     1. 增加超链接的点击区域
     1. 高度可控的分割线
-        
-        ```
+
+        ```css
         <div>
             <a href="javascript:alert('注册')">注册</a>
             <span></span>
@@ -350,20 +352,43 @@
             可实现右上角小标志的效果
             */
         }
-
-
-        注：
-            张鑫旭老师是直接写在了登录的::before上, 但是这样的话 分隔符也会有:hover,并可以点击
         ```
+
+
+    注：
+            张鑫旭老师是直接写在了登录的::before上, 但是这样的话 分隔符也会有:hover,并可以点击
 
 * padding 百分比值
     * **padding 百分比值无论是水平方向还是垂直方向 均是相对于宽度计算的(内联 和 块状)**
-    
+
     * 对于内联元素
         * **padding是会断行的，也就是padding区域是跟着内敛和模型中的 行框盒子 走的**
 
-### margin
+* 兼容性
+
+    * 如果容器可以滚动，在IE和FF浏览器下是会忽略padding-bottom值的，Chrome则不会
+
+        ```css
+        div{
+            height:100px;
+            padding:50px 0;
+            overflow:auto;
+            outline:1px solid green;
+        } 
+        img{
+            height:300px;
+        }
+        
+        <div>
+            <img src="/home/bill/Pictures/fox.jpg" alt="">
+        </div>
+        ```
+
+    * IE 和 FF 是子元素超过padding-box 尺寸触发滚动条显示；Chrome 是子元素超过 content-box 尺寸触发滚动条显示。
+
+## margin
 * 初始值为0
+
 #### 概念定义
 * 元素尺寸(元素偏移尺寸)
     * border+padding+content
@@ -389,11 +414,11 @@
     * 只有元素是 “充分利用可用空间”状态的时候，margin 才可以改变元素的可视尺寸
 
 #### margin 百分比值
-* 同 padding 一样，无论水平方向 还是 垂直方向 都是相对于宽度计算
+* 同 padding 一样，无论水平方向还是垂直方向都是相对于宽度计算。
 
 ##### margin 合并
 * 块级元素的上边距(margin-top) 与下边距(margin-bottom) 有时会合并为单个外边距，这种现象称为“margin 合并”
-    * 块级元素：不包括 浮动 和 绝对定位元素
+    * 块级元素：不包括浮动和绝对定位元素
     * 只发生在垂直方向(不考虑 writing-mode的情况下)
 
 * 3 种 margin 合并
@@ -408,7 +433,7 @@
     1. 自身margin合并的意义在于可以避免不小心遗落或者生成的空标签影响排版和布局
 
 #### margin:auto
-* margin:auto 就是为了填充这个**闲置的尺寸**而设计的
+* margin:auto 就是为了填充这个**闲置的尺寸**而设计的。
 
 * 规则如下
     1. 一侧定值，一侧auto,则auto为剩余空间大小
@@ -416,16 +441,16 @@
         * 右对齐:   margin-left:auto;
     1. 两侧都是auto，则平分剩余空间
 
-    1. 触发 margin:auto 计算有一个条件，就是当 **width 或 height 为auto时，元素具有对应方向的自动填充特性**，即当去掉 width 或 height 时，对应方向是利用剩余最大空间，不能使 shrink-to-fit，否则不能触发 margin:auto 对齐计算
-    1. 由于**绝对定位元素的格式化高度**即使父元素 height:auto 也是支持的，所以使用 margin:auto 居中的方法比 top:50% 然后margin负一半的方法好
+    1. 触发 margin:auto 计算有一个条件，就是当 **width 或 height 为auto时，元素具有对应方向的自动填充特性**，即当去掉 width 或 height 时，对应方向是利用剩余最大空间，不能使 shrink-to-fit，否则不能触发 margin:auto 对齐计算。
+    1. 由于**绝对定位元素的格式化高度**即使父元素 height:auto 也是支持的，所以使用 margin:auto 居中的方法比 top:50% 然后margin负一半的方法好。
 
 * margin 无效的情况
-    1. inline 的非替换元素 垂直margin 是无效的,spec 有说，但是厂商都一致的忽略了，
+    1. 内联元素的非替换元素的垂直margin 是无效的，spec 有说，但是厂商都一致的忽略了，
         * **对于内联替换元素，垂直margin是有效的，且没有margin合并的问题**
-    
+
     1. **绝对定位元素 非定位方位的 margin 无效**
         * 只有top 和 left, 不是格式化宽度、高度，不是流体布局，margin-right ,margin-bottom 无效
-        ```
+        ```css
         .div{
             width:100px;
             height:100px;
@@ -438,71 +463,83 @@
         }
         ```
 
-    1. margin 合并的时候，更改 margin 值*可能*是没有效果的
+    1. margin 合并的时候，更改 margin 值**可能**是没有效果的
 
     1. **tr标签 td标签，或display为 table-cell,table-row 的元素的 margin 是无效的，但是table-caption, table, inline-table 的margin是有效的**
 
-    1. **定高容器的 高度定死 的子元素的 margin-bottom, 定宽容器 宽度定死的子元素的 margin-right 无效**
+    1. **高度定死（定高容器）的子元素的 margin-bottom，宽度定死（定宽容器）的子元素的 margin-right 给人无效的感觉**
 
-        ```
-            .father{
-                height:100px;
-            }
-            .child{
-                .height:80p;
-                margin-bottom:50px;
-            }
-
+        ```css
+        .father{
+            height:100px;
+        }
+        .child{
+            height:80px;
+            margin-bottom:50px;
+        }
+        
             若想使用 margin 改变自身的位置，必须是和当前元素定位方向一样的margin属性才可以，否则，margin属性只能影响后面的元素或父元素
         ```
+        若想使用 margin 属性改变自身的位置，必须是**和当前元素定位方向一样的margin属性**才可以，否则，margin只能影响后面的元素或则父元素。
+
+        ​	例如，一个普通元素，默认流下，其定位方向是左侧及上方，此时只有 margin-left 和 margin-top 可以影响元素的定位。
+
+#### 经典案例
+
+* margin+padding 实现多栏等高布局
+
 ## border
-### 宽度
+
+### border-width
 1. thin :   1px 
 1. medium(default)   :   3px
     * 因为 border-style：double 至少3px才有效果
 1. thick    : 4px
 
-## border-style
+###  border-style
 * border-style:dashed
     * 虚线颜色区的宽高比 以及 颜色区和透明区宽度比例 在不同的浏览器下是有差异的
 
 * border-style:dotted
     * chrome 和 ff 是小方点，IE 是 小圆点
 
-## border-color
+### border-color
 * 默认使用color色值
 
-## 第五章 内联元素与流
+## 内联元素与流
 
 * line-height:两基线间的距离(baseline)
-
 * x-height
     * 一个 ex 是一个字体的 x-height(x-height 通常是字体尺寸的一半),基线和中线(median)的距离
     * vertical-align:middle 这个middle 是 baseline 网上1/2 x-height 高度，就是 x 的交叉点
-
 * ex
     * 一个相对单位，指的是小写字母 x 的高度
     * 字母 x 受字体等 CSS 属性影响较大，不稳定，因此 ex 不适合用于限定元素的尺寸
-    * **不受字体和字号影响 的内联元素的 垂直居中对齐效果**
-
+    * **不受字体和字号影响 的内联元素的 垂直居中对齐效果**(不过要用矢量图标)
+    * 顶线、中线(median)、基线、底线，1ex 就是中线和基线之间，一共3个格子，在中间不是垂直居中对齐是什么呢
 * **对于非替换元素的纯内联元素，其可视高度完全有 line-height 决定。**
-
+    * 完全，padding，border都没用
 * 行距 和 半行距
     * 行距 = line-height - font-size(simsun)
     * font-size:1em ; em-box , em-box 受 font-size 影响
-
-* line-height 不能影响替换元素的高
-
+* **line-height 不能影响替换元素的高**
+    * div 中包含 img ,div 设置 line-height=0,依然可以被 img 撑开
 * **line-height 不仅是内联元素高度的基石，也是整个CSS世界高度体系的基石**
-
+* 内容区域的高度受 font-family 和 font-size 影响；而 em-box 仅受 font-size 影响。
+* 如果有替换元素，则 line-height 只能决定最小高度
+    * 替换元素的高度不受 line-height 影响
+    * vertical-align 在作祟
+* 文字字形的垂直中线位置普遍比真正的行框盒子的中垂线位置低。
 * 内联元素 line-height 的大值特性
-    * 无论内联元素 line-height 如何设置，最终父级元素的高度都是由数值大的那个line-height决定的，内联元素 line-height 的大值特性
+    * 无论内联元素 line-height 如何设置，最终父级元素的高度都是由**数值大的那个line-height**决定的，内联元素 line-height 的大值特性
+* 行框盒子的高度是由高度最高的那个“内联盒子”决定的。
 
 ### vertical-align
 * 数值单位
     * 相对于基线移动
         * 正数，往上偏移
         * 负数，往下偏移
+
 * middle:base-line 向上偏移1/2 x-height
 
 * 线类
@@ -511,12 +548,50 @@
 
 * 只能用于内联元素 和 display为table-cell 的元素
 
-## 浮动
+* 父元素line-height固定值，子元素font-size不一的问题
+
+    * font-size 越大字符的基线越靠下，因为基线对齐，所以当字号不一样的两个文字在一起的时候，彼此会发生上下位移，如果位移距离足够大，就会超过行高的限制，而导致出现意料之外的情况。
+
+* inline-block元素的baseline确定规则
+    * inline-block 如果没有内联元素，或者overflow不是visible, 则该元素的基线就是其 margin 底边缘
+    * **inline-block 如果不是空的，基线是元素里面最后一行内联元素的基线**
+
+    * **非主动触发位移的内联元素**是不可能跑到计算容器外面的
+
+        ```css
+        img{
+            width:100px;
+            margin-top:-9999999px;
+            /*非主动触发位移的内联元素, 前面有个 strut ,被vertical-align:baseline 限制住了*/
+        }
+        <div>
+            <img src='./tennis.jpg'>
+        </div>
+        ```
+
+* 关系
+    * line-height 有时会受 font-size 影响，
+    * vertical-align 受 line-height 影响
+    * font-size 不一样，导致 4条线不一样高，
+    * 虽然line-height 设定了定值，但是vertical-align 让其中一条线对齐，导致高度不等于 line-height
+    * 结论，字体大小不一 + vertical-align 的煽风点火 导致 height 不一定等于 line-height
+
+    * 为什么 font-size 定值，FF 和 chrome 却显示不一样的元素大小???
+
+* vertical-align 文本类属性值
+
+    * text-top
+        * 假设元素后面有一个和父元素 font-size 、font-family 一模一样的文字内容，则该元素上 的 vertical-align:text-top 表示元素和这个文字的内容区域的上边缘对齐。
+    * text-bottom
+
+
+## Float
 * 浮动元素会形成 块盒子,display:block
+
 * float 配合 margin 负值
     * 两栏右侧固定布局    
 
-    ```
+    ```css
     <style>
         div{
             width:100%;
@@ -533,7 +608,7 @@
                 margin-left:-250px;
         }
     </style>
-
+    
         <div>
         <p>
         Amet perferendis eaque temporibus beatae architecto Perspiciatis cum incidunt veniam deserunt ullam. Odit fuga voluptatum sapiente qui voluptatem. Harum quae fugit culpa doloribus voluptatem Omnis dolore ipsam laboriosam fugit iusto
@@ -542,19 +617,266 @@
     <img src="./girl.jpeg" alt="">
     ```
 
-## ff chrome 差异
+### 行框盒子和浮动元素的不可重叠性
+
+* 具体实例
+
+    ```css
+    div.wrap{
+        border:1px solid green;
+        margin-left:200px;
+    }
+    .father{
+        margin-left:200px;
+    }
+    img{
+        width:100px;
+        float:left;/* 或者写在上面的 .father 中 */
+    }
+    p{
+        margin-left:-100px;
+        background:#ccc;
+    }
+    
+    <div class='wrap'>
+    <div class="father"><img src="/home/bill/Pictures/fox.jpg" alt=""></div>
+    <p>
+    Adipisicing nam quo adipisci voluptatibus molestias? Modi accusamus beatae nulla incidunt omnis omnis! Debitis libero aspernatur ratione quis dignissimos Magnam quisquam facilis quae omnis temporibus unde. Doloremque laborum voluptate ullam.
+    Adipisicing nam quo adipisci voluptatibus molestias? Modi accusamus beatae nulla incidunt omnis omnis! Debitis libero aspernatur ratione quis dignissimos Magnam quisquam facilis quae omnis temporibus unde. Doloremque laborum voluptate ullam.
+    Adipisicing nam quo adipisci voluptatibus molestias? Modi accusamus beatae nulla incidunt omnis omnis! Debitis libero aspernatur ratione quis dignissimos Magnam quisquam facilis quae omnis temporibus unde. Doloremque laborum voluptate ullam.
+    </p>
+    </div>
+    ```
+
+    ```css
+    .wrap{
+        outline:1px solid green;
+        margin-left:200px;
+    }
+    img{
+        width:200px;
+        float:left;
+        opacity:0.4;
+    }
+    p{
+        margin-left:-100px;
+    }
+    
+    <div class="wrap">
+    <img src="/home/bill/Pictures/fox.jpg" alt="">
+    <p>
+    Consectetur illo maxime tempore ea aperiam, veniam Nemo sit architecto dolorum officia modi Maxime nostrum perferendis corrupti eveniet dicta. Non dolorum non eligendi excepturi laboriosam Earum laboriosam ipsam sed illo
+    Consectetur illo maxime tempore ea aperiam, veniam Nemo sit architecto dolorum officia modi Maxime nostrum perferendis corrupti eveniet dicta. Non dolorum non eligendi excepturi laboriosam Earum laboriosam ipsam sed illo
+    Consectetur illo maxime tempore ea aperiam, veniam Nemo sit architecto dolorum officia modi Maxime nostrum perferendis corrupti eveniet dicta. Non dolorum non eligendi excepturi laboriosam Earum laboriosam ipsam sed illo
+    Consectetur illo maxime tempore ea aperiam, veniam Nemo sit architecto dolorum officia modi Maxime nostrum perferendis corrupti eveniet dicta. Non dolorum non eligendi excepturi laboriosam Earum laboriosam ipsam sed illo
+    Consectetur illo maxime tempore ea aperiam, veniam Nemo sit architecto dolorum officia modi Maxime nostrum perferendis corrupti eveniet dicta. Non dolorum non eligendi excepturi laboriosam Earum laboriosam ipsam sed illo
+    </p>
+    </div>
+    ```
+
+* 行框盒子和浮动元素的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素，而不会发生重叠。
+
+    * “块状盒子” 中的 “行框盒子” （margin-left:-100px）被浮动元素限制，没有任何的重叠。
+
+        * 这种限制是根深蒂固的，行框盒子的区域永远就这么大，只要不改变当前布局方式，无法通过其他CSS属性改变这个区域的大小。
+
+    * 但假如 p 换成 span 的话，仅第一个行框盒子会和 float 元素发生重叠。
+
+        ```css
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title></title>
+            <style>
+                .wrap{
+                    outline:1px solid green;
+                    margin-left:200px;
+                    width:350px;
+                }
+                img{
+                    width:100px;
+                    float:left;
+                    opacity:0.4;
+                }
+                span{
+                    margin-left:-200px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="wrap">
+                <img src="/home/bill/Pictures/fox.jpg">
+                <img src="/home/bill/Pictures/fox.jpg">
+                <img src="/home/bill/Pictures/fox.jpg">
+                <span>
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                    nice to meet you
+                </span>
+            </div>
+        </body>
+        </html>
+        ```
+
+    ### Float 更深入的作用机制
+
+    * 两个概念
+
+      1. 浮动锚点（float anchor）
+
+      1. 浮动参考（float reference）:浮动元素对齐参考的实体。在CSS2.1 中，是“行框盒子”，而不是包含块之类的盒子。
+
+         ```css
+         .wrap{
+             width:100px;
+             background:green;
+         }
+         span{
+             font-weight:900;
+             /* 文字正好是两行，因为浮动参考是行框盒子，所以被移动到下面一行中显示了 */
+             float:right;
+         }
+         
+         <div class="wrap">
+         nice to meet you you you
+         <span>more</span>
+         </div>
+         ```
+
+         
+
+## 层叠上下文(Stacking context)
+
+* z-index 只是 CSS 层叠规则中的一叶扁舟。
+* 作用对象
+  * 定位元素
+  * flex 盒子
+* 每个元素都有层叠水平，包括层叠上下文元素。普通元素的层叠水平只局限在当前层叠上下文中。
+
+### 层叠水平（stacking level）
+
+1. 决定了同一个层叠上下文中元素在z轴上的显示顺序。
+1. 任何元素都有层叠水平。
+
+### 层叠顺序（stacking order）
+
+**每一个层叠顺序值适用于当前层叠上下文元素的小世界。**
+
+1. background/border 	装饰作用
+
+1. -z-index
+
+   1. z-index 负值渲染的过程就是一个寻找第一个层叠上下文元素的过程，然后层叠顺序止步于这个层叠上下文元素。
+
+      1. 可访问行隐藏
+
+         ```css
+         [type=submit]{
+             position:absolute;
+             z-index:-1;
+         }
+         ```
+
+         
+
+1. block块状水平盒子  用于布局
+
+1. float浮动盒子  用于布局
+
+1. inline水平盒子（inline、inline-block、inline-table） 内容
+
+1. z-index:auto 或看成z-index:0
+
+   1. 如果层叠上下文元素不依赖 z-index 数值，则其层叠顺序是 z-index:auto，可看成 z-index:0 级别。
+      1. 一旦成为定位元素，其z-index:auto 就会自动生效
+      1. 不支持 z-index 的层叠上下文元素（如 opacity，transfrom）天然是 z-index:auto 级别。
+   1. 如果层叠上下文元素依赖 z-index 数值，则其层叠顺序有 z-index 值决定。
+
+1. +z-index
+
+   1. 不要超过2
+
+### 层叠上下文的创建
+
+1. 根元素 HTML
+1. z-index为数值（不为auto）的定位元素；z-index 为auto，则是普通定位元素，没有创建层叠上下文。
+1. 其他CSS属性
+   1. flex 同时 z-index 不为1
+   1. opacity 不为1
+   1. transform 不为 none
+
+### 层叠准则
+
+1. 谁大谁上
+1. 后来居上
+1. 止步于父级层叠上下文
+
+## 文本
+
+### font-size
+
+* font-size 与 em ex rem ch(字符零的宽度)
+
+  ```css
+  h1{
+      font-size:2em;
+      /* margin-left:1em 具体的值是多少呢？ */
+      margin-left:1em;
+  }
+  ```
+
+  * CSS 世界的渲染是一次渲染，首先会计算 font-size，然后再计算给其他使用em单位的属性值大小。em是根据当前 font-size 大小计算的。
+  * 当前元素的font-size是多变的，根元素的font-size是固定的。如果使用rem，我们的计算就不会受到当前元素 font-size 大小的影响。
+
+### font-family
+
+* 主要的几个字体族
+  1. serif：衬线字体
+  1. sans-serif：无衬线字体
+  1. monospace：等宽字体
+  1. cursive：手写字体
+  1. fantasy：奇幻字体
+* 中文字体和英文名称
+  * 虽然有些中文字体，如宋体、微软雅黑，直接用中文名作为 font-family的属性值也可以，但是推荐用与之对应的英文名称。
+  * SC(Simplified Chinese)简体
+  * TC(Traditional Chinese)繁体
+
+### text-indent
+
+* **text-indent 的百分比值是相对于当前元素的包含块计算的，而不是当前元素。**
+
+### letter-spacing
+
+* 默认值是normal，而不是0,。
+* 支持负值，且值足够小的时候，会让字符重叠，甚至反向排列（IE最多重叠，反向是不可能的）
+
+## FF  Chrome 差异
+
 * input search 
     * 差异
-        * ff是inline(但可以有宽高,是border-box)     chrome是inline-block
-        * ff最右边没有叉号，                        chrome 有叉号
-        * ff写上value，不显示，默认的search.value也获取不到，chrome正常
-        * 同时有value和placeholder, ff显示placeholder,获取不到默认的value    chrome 显示value,可以获取到默认的value,将默认的value清除后，显示placeholder
+        * FF是inline(但可以有宽高,是border-box)；chrome是inline-block
+        * FF最右边没有叉号； chrome 有叉号
+        * FF写上value，不显示，默认的search.value也获取不到；chrome正常
+        * 同时有value和placeholder, FF显示placeholder,获取不到默认的value；chrome 显示value,可以获取到默认的value,将默认的value清除后，显示placeholder
 
     * 相同
         * 都是 border-box
 
 
-# CSS Secret
+## CSS Secret
 * DRY 是 Don’t Repeat Yourself
 * WET， 它的意思是 We Enjoy Typing（ 我们喜欢敲键盘） 或 Write Everything Twice（ 同样的代码写两次）。
 
@@ -568,7 +890,7 @@
 
 * 第 22 条军规”是一条自相矛盾的、 永远不可能执行的悖论。
 
-## CSS 编码技巧
+### CSS 编码技巧
 * 在实践中，代码可维护性的最大要素是尽量减少改动时要编辑的地方。 
 
 * 当某些值相互依赖时， 应该把它们的相互关系用代码表达出来。
@@ -584,7 +906,7 @@
 
 ### 尽量减少代码重复
     1. currentColor，它是从SVG 那里借鉴来的。 这个关键字并没有绑定到一个固定的颜色值， 而是一直被解析为 color
-
+    
     1. inherit 可以用在任何 CSS 属性中， 而且它总是绑定到父元素的计算值（ 对伪元素来说， 则会取生成该伪元素的宿主元素）。 
 
 ### 相信你的眼睛，而不是数字

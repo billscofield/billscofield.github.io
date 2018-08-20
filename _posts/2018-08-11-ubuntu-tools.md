@@ -62,9 +62,63 @@ redirect_from:
 
 
 ## 图片外链网站
-* <del><a href='http://www.tietuku.com/'>贴图库</a>
-    * 根据官网介绍，“为用户提供无限空间、无限流量、无限数量的图片存储服务”，并且第一次使用时感觉很好，所以向大家推荐</del>
+* <del><a href='http://www.tietuku.com/'>贴图库</a></del>
+    * <del>根据官网介绍，“为用户提供无限空间、无限流量、无限数量的图片存储服务”，并且第一次使用时感觉很好，所以向大家推荐</del>
     * 免费的居然只保存7天，故删除
+
+
+## markdown 编辑器
+* <a href='https://typora.io'>typora</a>
+    * Typora 使用的是 GitHub 风格的 Markdown 语法
+    * 免费
+
+## you-get
+1. 安装
+    1. 安装 ffmpeg
+        1. 添加源。
+            * sudo add-apt-repository ppa:djcj/hybrid
+        1. 更新源。
+            * sudo apt-get update
+        1. 下载安装。
+            * sudo apt-get install ffmpeg
+    1. 安装 you-get
+        1. pip3 install you-get
+
+1. 下载视频
+    1. --info/-i 以查看所有可用画质与格式
+        * you-get -i [url]
+
+    1. 暂停与恢复
+        1. 暂停 ctrl + c
+            * 临时的.download文件将保存于输出目录。下次使用you-get传入相同参数时，下载将从上次继续开始. 如果下载已经完成 (临时的.download 扩展名消失), you-get将忽略下载.
+        1. 用--force/-f强行重下载. (注意: 将覆盖同名文件或临时文件!)
+
+    1. 设置输出文件名或路径
+        * 使用--output-dir/-o 设定路径, --output-filename/-O 设定输出文件名:
+
+            ```
+            $ you-get -o ~/Videos -O zoo.webm 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
+            ```
+
+        * 提示:
+            * 如果原视频标题含有与系统不兼容字符，十分有效.
+            * 也可以帮助使用脚本批量下载于指定目录和文件名.
+1. 观看视频
+
+使用 --player/-p 将视频喂进播放器, 例如 mplayer 或者 vlc,而不是下载:
+
+```
+$ you-get -p vlc 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
+```
+
+或者你想在浏览器中观看而不希望看广告或评论区:
+
+```
+$ you-get -p chromium 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
+```
+
+To know more about you-get, please go to https://github.com/soimort/you-get/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E
+
 
 
 
