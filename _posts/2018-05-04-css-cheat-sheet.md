@@ -176,10 +176,10 @@ redirect_from:
     * 同 display:none 的区别
 * overflow
     1. visible	默认值。内容不会被修剪，会呈现在元素框之外。
-    1. hidden	内容会被修剪，并且其余内容是不可见的。
-    1. scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
-    1. auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
-    1. inherit	规定应该从父元素继承 overflow 属性的值。
+    	. hidden	内容会被修剪，并且其余内容是不可见的。
+    	. scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+    	. auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+    	. inherit	规定应该从父元素继承 overflow 属性的值。
 * overflow-x
 * overflow-y
 
@@ -237,20 +237,38 @@ redirect_from:
         * 如果提供两个，第一个用于上左(top-left)、下右(bottom-right)，第二个用于上右(top-right)、下左(bottom-left)。
         * 如果提供三个，第一个用于上左(top-left)，第二个用于上右(top-right)、下左(bottom-left)，第三个用于下右(bottom-right)。
         * 垂直半径也遵循以上4点。
+    * 圆角大值特性，值很大的时候，只会使用能够渲染的圆角大小渲染
+    * 圆角等比例特性，就是水平半径和垂直半径的比例是恒定不变的。
+
+---
 
 * box-shadow
     * x-shadow	必需。水平阴影的位置。允许负值
-    * y-shadow	必需。垂直阴影的位置。允许负值。
-    * blur	    可选。模糊距离。
-    * spread	可选。阴影的尺寸。
-    * color	    可选。阴影的颜色。
-    * inset	    可选。将外部阴影 (outset) 改为内部阴影。
+    	 y-shadow	必需。垂直阴影的位置。允许负值。
+    	 blur	    可选。模糊距离。
+    	 spread	可选。阴影的尺寸。
+    	 color	    可选。阴影的颜色。
+    	 inset	    可选。将外部阴影 (outset) 改为内部阴影。
+
+* text-shadow
+    * x-shadow	必需。水平阴影的位置。允许负值。
+    	 y-shadow	必需。垂直阴影的位置。允许负值。
+    	 blur	可选。模糊的距离。	测试
+    	 color	可选。阴影的颜色。
+    * 注意
+        * 可以写多个，如
+
+            ```
+            text-shadow:1px 1px 0 red,1px -1px 0 green;
+            ```
+---
+
 * border-image
     * border-image-source	用在边框的图片的路径。
-    * border-image-slice	图片边框向内偏移。
-    * border-image-width	图片边框的宽度。
-    * border-image-outset	边框图像区域超出边框的量。
-    * border-image-repeat	图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。
+    	 border-image-slice	图片边框向内偏移。
+    	 border-image-width	图片边框的宽度。
+    	 border-image-outset	边框图像区域超出边框的量。
+    	 border-image-repeat	图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。
 
 ## 背景
 * background
@@ -261,45 +279,63 @@ redirect_from:
         * repeat-y
         * repeat(Default)
         * no-repeat
-        * round：背景图像自动缩放直到适应且填充满整个容器。（CSS3）
-        * space：背景图像以相同的间距平铺且填充满整个容器或某个方向。（CSS3）
+        * round：???背景图像自动缩放直到适应且填充满整个容器。（CSS3）
+        * space：???背景图像以相同的间距平铺且填充满整个容器或某个方向。（CSS3）
     * background-attachment
         * fixed
         * scroll
-        * local：背景图像相对于元素内容固定，也就是说当元素随元素滚动时背景图像也会跟着滚动，因为背景图像总是要跟着内容。
+        * local：???背景图像相对于元素内容固定，也就是说当元素随元素滚动时背景图像也会跟着滚动，因为背景图像总是要跟着内容。
     * background-position
-        * &gt;percentage&gt;：用百分比指定背景图像填充的位置。可以为负值。
-        * &gt;length&gt;：用长度值指定背景图像填充的位置。可以为负值。
+        * percentage：用百分比指定背景图像填充的位置。可以为负值。
+        * length：用长度值指定背景图像填充的位置。可以为负值。雪碧图sprite
         * center：背景图像横向和纵向居中。
         * left：背景图像在横向上填充从左边开始。
         * right：背景图像在横向上填充从右边开始。
         * top：背景图像在纵向上填充从顶部开始。
         * bottom：背景图像在纵向上填充从底部开始
-    * background-origin
+
+    * background-origin(3)
         * padding-box	背景图像相对于内边距框来定位。
-        * border-box	背景图像相对于边框盒来定位。
-        * content-box	背景图像相对于内容框来定位。
-    * background-clip:规定背景的绘制区域
+        	 border-box	背景图像相对于边框盒来定位。
+        	 content-box	背景图像相对于内容框来定位。
+    * background-clip:规定背景的绘制区域(3)
         * border-box	背景被裁剪到边框盒。(default)
-        * padding-box	背景被裁剪到内边距框。
-        * content-box	背景被裁剪到内容框。
-    * background-size
+        	 padding-box	背景被裁剪到内边距框。
+        	 content-box	背景被裁剪到内容框。
+    * background-size(3)
+        1. length  设置背景图像的高度和宽度。
+            * 第一个值设置宽度，第二个值设置高度。
+            * 如果只设置一个值，则第二个值会被设置为 "auto"。
+            * 如果两个都设置成具体值，背景图像可能会变形
+        1. percentage  
+            * 以父元素的百分比来设置背景图像的宽度和高度。
+            * 第一个值设置宽度，第二个值设置高度。
+            * 如果只设置一个值，则第二个值会被设置为 "auto"。
+            * 如果两个都设置成具体值，背景图像可能会变形
+        1. cover   
+            * 把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。
+            * **背景图像的某些部分也许无法显示在背景定位区域中。**
+            * 保持图像纵横比
+        1. contain 把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。
+            * 可能会repeat
+            * 保持图像纵横比
+
 
         ```
         length	
             设置背景图像的高度和宽度。
             第一个值设置宽度，第二个值设置高度。
             如果只设置一个值，则第二个值会被设置为 "auto"。
-
+    
         percentage	
             以父元素的百分比来设置背景图像的宽度和高度。
             第一个值设置宽度，第二个值设置高度。
             如果只设置一个值，则第二个值会被设置为 "auto"。
-
+    
         cover	
             把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。
             背景图像的某些部分也许无法显示在背景定位区域中。
-
+    
         contain	
             把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。
         ```
@@ -334,28 +370,38 @@ redirect_from:
 ## 文本
 * text-transform
     * none	默认。定义带有小写字母和大写字母的标准的文本。
-    * capitalize	文本中的每个单词以大写字母开头。
-    * uppercase	定义仅有大写字母。
-    * lowercase	定义无大写字母，仅有小写字母。
-    * inherit	规定应该从父元素继承 text-transform 属性的值。
-
-* white-space:规定段落中的文本不进行换行
-    * normal	默认。空白会被浏览器忽略。
-    * pre	空白会被浏览器保留。其行为方式类似 HTML 中的 &lt;pre&gt; 标签。
-    * nowrap	文本不会换行，文本会在在同一行上继续，直到遇到 &lt;br&gt; 标签为止。
-    * pre-wrap	保留空白符序列，但是正常地进行换行。
-    * pre-line	合并空白符序列，但是保留换行符。
-    * inherit	规定应该从父元素继承 white-space 属性的值。
+    	 capitalize	文本中的每个单词以大写字母开头。
+    	 uppercase	定义仅有大写字母。
+    	 lowercase	定义无大写字母，仅有小写字母。
+    	 inherit	规定应该从父元素继承 text-transform 属性的值。
 
 * tab-size
     * &lt;integer&gt;：用整数值指定制表符的长度。不允许负值。
     * &lt;length&gt;：用长度值指定制表符的长度。不允许负值。
 
+---
+
+* text-overflow
+    * clip	修剪文本。(截取)
+    	 ellipsis	显示省略符号来代表被修剪的文本。
+
+* white-space:规定段落中的文本不进行换行
+
+    * 用来处理 空白符 和 换行
+
+      | ---------- |   换行符     | 空格和制表符 | 文字转行 |
+      | ---------- | ------------ | ------------ | -------- |
+      | `normal`   | 合并         | 合并         | 转行     |
+      | `nowrap`   | 合并         | 合并         | 不转行   |
+      | `pre`      | 保留         | 保留         | 不转行   |
+      | `pre-wrap` | 保留         | 保留         | 转行     |
+      | `pre-line` | 保留         | 合并         | 转行     |
+
 * word-break
-    * normal	使用浏览器默认的换行规则。
-    * keep-all	只能在半角空格或连字符处换行。
-    * break-all	允许在单词内换行。
-    * break-world
+    * normal	使用浏览器默认的换行规则。(CJK的一个字符是一个letter,也是一个单词，换行的话把CJK当成单词了，默认可以换行)
+    	 keep-all	不允许CJK文本中的单词换行，只能在‘半角空格’或‘连字符’处换行。针对CJK文本
+    	 break-all	允许非CJK文本间的单词内换行。针对西方文本
+    * break-world 非官方的
 
 * word-wrap(overflow-wrap):允许长单词换行到下一行
     * normal：允许内容顶开或溢出指定的容器边界。
@@ -365,13 +411,18 @@ redirect_from:
 
 * 注意
     * CSS3中将 &lt;word-wrap&gt; 改名为 &lt;overflow-wrap&gt;；由于历史原因，当你使用 &lt; overflow-wrap &gt; 时，最好同时使用 &lt; word-wrap &gt; 作为备选，作向前兼容。
+    * 当 word-break:keep-all 和 word-wrap:break-world 同时存在且冲突时，word-wrap:break-world 生效
+    * white-space:nowrap 和 word-wrap:break-word 冲突时，white-space:nowrap生效
+    * overflow text-overflow white-space word-break word-wrap(overflow-wrap)
+
+---
 
 * text-align
     * left	    把文本排列到左边。默认值：由浏览器决定。
-    * right	    把文本排列到右边。
-    * center	把文本排列到中间。
-    * justify	实现两端对齐文本效果。
-    * inherit	规定应该从父元素继承 text-align 属性的值。
+    	 right	    把文本排列到右边。
+    	 center	把文本排列到中间。
+    	 justify	实现两端对齐文本效果。
+    	 inherit	规定应该从父元素继承 text-align 属性的值。
     * start     内容对齐开始边界。（CSS3）
     * end       内容对齐结束边界。（CSS3）
     * text-align只控制行内内容(文字、行内元素、行内块级元素)如何相对他的块父元素对齐
@@ -444,11 +495,6 @@ redirect_from:
         * under：下划线的定位与元素内容盒子的下边缘相关
         * left：下划线的定位与元素内容盒子的左边缘相关
         * right：下划线的定位与元素内容盒子的右边缘相关
-    * text-shadow
-        * h-shadow	必需。水平阴影的位置。允许负值。
-        * v-shadow	必需。垂直阴影的位置。允许负值。
-        * blur	可选。模糊的距离。	测试
-        * color	可选。阴影的颜色。
 
 ## 书写模式
 * direction
@@ -490,10 +536,6 @@ redirect_from:
 ## 用户界面
 * appearance
 
-* text-overflow
-    * clip	修剪文本。(截取)
-    * ellipsis	显示省略符号来代表被修剪的文本。
-
 * outline:outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用,轮廓线不会占据空间，也不一定是矩形。
     * outline-width
     * outline-style
@@ -522,125 +564,8 @@ redirect_from:
     1. scale-down
         * 内容的尺寸就像是指定了none或contain，取决于哪一个将导致更小的对象尺寸。
 
+
 ## 动画 Animation
-### Transform 变形2D
-* transform
-    * rotate 旋转
-        * rotateX()
-        * rotateY()
-        * rotateZ()
-        * 注意
-            * 需先有 transform-origin  属性的定义
-            * 方向：HTML 各轴的正方向
-                ```
-                transform:rotate(10deg);
-                ```
-    * skew 倾斜
-        * skewX()
-        * skewY()
-        * skewZ()
-        * 或者 skew(x,y);
-        * 注意
-            * x' = x + y tanθ
-            * y' = y + x tanθ
-            * 数学坐标系    
-
-    * scale
-        * scaleX()
-        * scaleY()
-        * scale(both)
-        * scale(x,y)
-        * scaleZ()
-            * scaleZ 单独使用看不到效果，配合其他 transform 动作即可看出来
-                ```
-                transform:scaleZ(10) rotateY(45deg);
-                ```
-
-    * translate 位移
-        * translateX()
-        * translateY()
-        * 修改 transform-origin 无实际意义
-        * translateZ()
-
-* transform-origin:设置对象中的变换所参照的原点
-    * x-axis
-        * 定义视图被置于 X 轴的何处
-        * left/center/right/length/%
-    * y-axis
-        * 定义视图被置于 y 轴的何处
-        * top/center/bottom/length/%
-    * z-axis
-        * 定义视图被置于 z 轴的何处
-        * length
-
-    ```
-    transform-origin:left top;
-    ```
-
-* transform-style:
-    * flat：指定子元素位于此元素所在平面内
-    * preserve-3d：指定子元素定位在三维空间内
-    * 注意
-        * ???该属性必须与 transform 属性一同使用
-        * 写在变形元素的父标签上
-
-* perspective:指定观察者与「z=0」平面的距离
-    * none：不指定透视
-    * length：指定观察者距离「z=0」平面的距离，为元素及其内容应用透视变换。不允许负值
-    * 一般写在祖先标签上 或 父标签上
-
-```
-两种
-1. 写在祖先标签上 或 父标签上
-perspective:2000px;
-
-2. 写在本身上
-transform:perspective(2000px);
-
-* 不同点
-    1. 父元素下面有很多变换的元素时，各不相同
-    1. 都相同
-```
-
-* perspective-origin:指定观察者在哪个位置进行观看（x轴，y轴)
-    * left、center、right、length和%
-    * top、center、bottom、length和%
-
-* backface-visibility:指定元素背面面向用户时是否可见
-    * visible：指定元素背面可见，允许显示正面的镜像。
-    * hidden：指定元素背面不可见
-
-* 实例
-
-```
-1. rotate
-.one{
-    margin:200px;
-    width: 100px;
-    height: 100px;
-    background:#00ff00cc;
-}
-.one:hover{
-    transform:rotateZ(45deg);
-    transition:all 1s;
-}
-
-2. skew
-.one{
-    margin:200px;
-    width: 100px;
-    height: 100px;
-    background:#00ff00cc;
-}
-.one:hover{
-    transform:skew(15deg,15deg);
-    transition:all 1s;
-}
-
-3. 综合
-transform:skew(15deg) scale(2);
-```
-
 ### Transition 过渡
 * transition
     * transition-property:检索或设置对象中的参与过渡的属性
@@ -683,77 +608,203 @@ transform:skew(15deg) scale(2);
 
     <div class="one"></div>
     ```
+
+### Transform 变形2D
+* transform
+    * rotate 旋转
+        * rotateX()
+        * rotateY()
+        * rotateZ()
+        * 注意
+
+            ```
+            transform:rotate(10deg);
+            ```
+
+    * skew 倾斜
+        * skewX()
+        * skewY()
+        * skewZ()
+        * 或者 skew(x,y);
+        * 注意
+            * x' = x + y tanθ
+            * y' = y + x tanθ
+            * 数学坐标系    
+
+    * scale
+        * scaleX()
+        * scaleY()
+        * scale(both)
+
+        * scale(x,y)
+        * scaleZ()
+            * scaleZ 单独使用看不到效果，配合其他 transform 动作即可看出来
+                ```
+                transform:scaleZ(10) rotateY(45deg);
+                ```
+
+    * translate 位移
+        * translateX()
+        * translateY()
+        * translateZ()
+        * 修改 transform-origin 无实际意义
+
+* 属性
+    1. transform-origin:设置对象中的变换所参照的原点
+        * x-axis
+            * 定义视图被置于 X 轴的何处
+            * left/center/right/length/%
+        * y-axis
+            * 定义视图被置于 y 轴的何处
+            * top/center/bottom/length/%
+        * z-axis
+            * 定义视图被置于 z 轴的何处
+            * length
+
+        ```
+        transform-origin:left top;
+        ```
+
+    1. transform-style:
+        * flat：指定子元素位于此元素所在平面内
+        * preserve-3d：指定子元素定位在三维空间内
+        * 注意
+            * ???该属性必须与 transform 属性一同使用
+            * **写在变形元素的父标签上**
+
+    1. perspective(透视):指定观察者与「z=0」平面的距离
+        * none：不指定透视
+        * length：指定观察者距离「z=0」平面的距离，为元素及其内容应用透视变换。不允许负值
+        * **一般写在祖先标签上 或 父标签上**
+
+        ```
+        两种
+        1. 写在祖先标签上 或 父标签上
+        perspective:2000px;
+
+        2. **写在本身上**
+        transform:perspective(2000px);
+
+        * 不同点
+            1. 父元素下面有很多变换的元素时，各不相同
+            1. 都相同
+        ```
+
+    1. perspective-origin:指定观察者在哪个位置进行观看（x轴，y轴)
+        * left、center、right、length和%
+        * top、center、bottom、length和%
+
+    1. backface-visibility:指定元素背面面向用户时是否可见
+        * visible：指定元素背面可见，允许显示正面的镜像。
+        * hidden：指定元素背面不可见
+
+
+        ```
+        1. rotate
+        .one{
+            margin:200px;
+            width: 100px;
+            height: 100px;
+            background:#00ff00cc;
+        }
+        .one:hover{
+            transform:rotateZ(45deg);
+            transition:all 1s;
+        }
+
+        2. skew
+        .one{
+            margin:200px;
+            width: 100px;
+            height: 100px;
+            background:#00ff00cc;
+        }
+        .one:hover{
+            transform:skew(15deg,15deg);
+            transition:all 1s;
+        }
+
+        3. 综合
+        transform:skew(15deg) scale(2);
+        ```
+
     
 ### Animation
-* animation
-    * animation-name
-    * animation-duration:动画执行时间
-    * animation-timing-function
+* animation-name
+* animation-duration:动画执行时间
+* animation-timing-function
 
-        <a href="https://www.cnblogs.com/aaronjs/p/4642015.html">详细内容参考</a>
+    <a href="https://www.cnblogs.com/aaronjs/p/4642015.html">详细内容参考</a>
 
-        <a href="https://designmodo.com/steps-css-animations/" title="参考内容">参考内容2</a>
+    <a href="https://designmodo.com/steps-css-animations/" title="参考内容">参考内容2</a>
 
-        * steps(n,start/end)  
-            * 帧动画效果
-            * 第一个参数指定了时间函数中的间隔数量（必须是正整数），是 @keyframes [动画名] 中的两帧之间插入帧的数量
-            * 第二个参数可选，接受 start 和 end 两个值，指定在每个间隔的起点或是终点发生阶跃变化，默认为 end。
-                * step-start在变化过程中，都是以下一帧的显示效果来填充间隔动画，即不显示第一帧（系统重新整理的帧）
-                * step-end与上面相反，都是以上一帧的显示效果来填充间隔动画，即不显示最后一帧（系统重新整理的帧）
-                * 例如 
-                    * 秒针，如果设置为 animation-timing-function:steps(6,start),@keyframes SECONDS(0{} 100%{}),第一帧位置是6秒，而不是0秒
-                    * 如果设置为steps(6,end),第一帧位置是0秒。这是默认设置，也更符合常理。
-            * steps(<number\_of\_steps>, <direction>)
+    * steps(n,start/end)  
+        * 帧动画效果
+        * 第一个参数指定了时间函数中的间隔数量（必须是正整数），是 @keyframes [动画名] 中的两帧之间插入帧的数量
+        * 第二个参数可选，接受 start 和 end 两个值，指定在每个间隔的起点或是终点发生阶跃变化，默认为 end。
+            * step-start在变化过程中，都是以下一帧的显示效果来填充间隔动画，即不显示第一帧（系统重新整理的帧）
+            * step-end与上面相反，都是以上一帧的显示效果来填充间隔动画，即不显示最后一帧（系统重新整理的帧）
+            * 例如 
+                * 秒针，如果设置为 animation-timing-function:steps(6,start),@keyframes SECONDS(0{} 100%{}),第一帧位置是6秒，而不是0秒
+                * 如果设置为steps(6,end),第一帧位置是0秒。这是默认设置，也更符合常理。
+        * steps(<number\_of\_steps>, <direction>)
 
-            * The second parameter defines the point at which the action declared in our @keyframes will occur. This value is optional and will default to “end” if left unspecified.  A direction of “start” denotes a left-continuous function and our animation’s first step will be completed as soon as the animation begins. It will jump immediately to the end of the first step and stay there until the end of this step duration.
+        * The second parameter defines the point at which the action declared in our @keyframes will occur. This value is optional and will default to “end” if left unspecified.  A direction of “start” denotes a left-continuous function and our animation’s first step will be completed as soon as the animation begins. It will jump immediately to the end of the first step and stay there until the end of this step duration.
 
-            * A direction of “end” denotes a right-continuous function and directs the movement to stay put until the duration of the first step is completed. Each option essentially moves the element from a different side and will produce different positioning for the same animation.
-            * Here’s a visual:
+        * A direction of “end” denotes a right-continuous function and directs the movement to stay put until the duration of the first step is completed. Each option essentially moves the element from a different side and will produce different positioning for the same animation.
+        * Here’s a visual:
 
-            <img src="http://www.刘蛟.中国/resources/CSS-Cheat-Sheet/stepsvisual.webp">
+        <img src="http://www.刘蛟.中国/resources/CSS-Cheat-Sheet/stepsvisual.webp">
 
-    * animation-delay:动画延迟
+* animation-delay:动画延迟
 
-    * animation-iteration-count
-        * infinite
-        * n
-    * animation-direction
-        * normal：正常方向
-        * reverse：反方向运行
-        * alternate：动画先正常运行再反方向运行，并持续交替运行
-        * alternate-reverse：动画先反运行再正方向运行，并持续交替运行
-    * animation-play-state
-        * running
-        * paused
-    * animation-fill-mode:动画结束后的状态
-        * none:
-        * forwards:当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。
-        * backwards:动画等待的那段时间内，在动画显示之前，应用开始属性值,元素的样式将设置为动画第一帧的样式,设置 delay 即可看出
-        * both:设置对象状态为动画结束或开始的状态
-        * https://www.w3cplus.com/css3/understanding-css-animation-fill-mode-property.html
+* animation-iteration-count
+    * infinite
+    * n
 
-        ```
-        @keyframes [name]{
-            0%{
-                transform:translate(200px,200px);
-            }
-            50%{
-                transform:translate(400px,400px);
-            }
-            100%{
-                transform:translate(200px,200px);
-            }
+* animation-direction
+    * normal：正常方向
+    * reverse：反方向运行
+    * alternate：动画先正常运行再反方向运行，并持续交替运行
+    * alternate-reverse：动画先反运行再正方向运行，并持续交替运行
+
+
+* animation:name duration timing-function delay count direction
+
+
+* **animation-play-state**
+    * running
+    * paused
+
+* **animation-fill-mode:动画结束后的状态**
+    * none:起始位置
+    * forwards:当动画完成后，保持最后一帧（在最后一个关键帧中定义）。
+    * backwards:动画等待的那段时间内，在动画显示之前，应用开始属性值,元素的样式将设置为动画第一帧的样式,设置 delay 即可看出
+    * both:设置对象状态为动画结束或开始的状态
+    * https://www.w3cplus.com/css3/understanding-css-animation-fill-mode-property.html
+
+    ```
+    @keyframes [name]{
+        0%{
+            transform:translate(200px,200px);
         }
-        @keyframes{
-            from
-            to
+        50%{
+            transform:translate(400px,400px);
         }
+        100%{
+            transform:translate(200px,200px);
+        }
+    }
+    @keyframes{
+        from
+        to
+    }
 
-        animation-name:move;
-        animation-duration:1s;
-        animation-iteration-count:infinite
-        animation-direction:alternative-reverse;
-        ```
+    animation-name:move;
+    animation-duration:1s;
+    animation-iteration-count:infinite
+    animation-direction:alternative-reverse;
+    ```
 
 ### 一般步骤
 ```
@@ -780,17 +831,19 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
         * !important;
 
 1. ID
+
     * \#id-name{}
 1. Class
+
     * .class-name{}
 1. 属性
     * E[att]	        CSS2	选择具有att属性的E元素。
-    * E[att="val"]	    CSS2	选择具有att属性且属性值等于val的E元素。
-    * E[att~="val"]	    CSS2	选择具有att属性，且属性值为一个用空格分隔的字词列表，其中一个等于val 的E元素。
-    * E[att^="val"]	    CSS3	选择具有att属性，且属性值为以val开头的字符串的E元素。
-    * E[att$="val"]	    CSS3	选择具有att属性，且属性值为以val结尾的字符串的E元素。
-    * E[att\*="val"]	CSS3	选择具有att属性，且属性值为 包含val的字符串的E元素。
-    * E[att\|="val"]	    CSS2	选择具有att属性，且属性值为 以val开头并用连接符"-"分隔的字符串的E元素，如果属性值仅为val，也将被选择。
+    	 E[att="val"]	    CSS2	选择具有att属性且属性值等于val的E元素。
+    	 E[att~="val"]	    CSS2	选择具有att属性，且属性值为一个用空格分隔的字词列表，其中一个等于val 的E元素。
+    	 E[att^="val"]	    CSS3	选择具有att属性，且属性值为以val开头的字符串的E元素。
+    	 E[att$="val"]	    CSS3	选择具有att属性，且属性值为以val结尾的字符串的E元素。
+    	 E[att\*="val"]	CSS3	选择具有att属性，且属性值为 包含val的字符串的E元素。
+    	 E[att\|="val"]	    CSS2	选择具有att属性，且属性值为 以val开头并用连接符"-"分隔的字符串的E元素，如果属性值仅为val，也将被选择。
 
 1. 伪类选择器
     * E:link
@@ -831,6 +884,7 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
     * E:disabled
 
 1. 标签
+
     * E{}
 
 1. 伪元素
@@ -850,19 +904,24 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
     * 空格分隔
 
 1. 直接子元素选择器
+
     * div &gt;ul &gt;li{}
 
 1. 并列选择器
+
     * a.class-name{} 
 
 1. 分组选择器
-    * ","分隔 
+
+     * ","分隔 
 
 1. 相邻选择符(E+F):选择紧贴在E元素之后的那"一个" F 元素
-    * 只选择一个,不论 E 后面有几个连续的 F 
+
+     * 只选择一个,不论 E 后面有几个连续的 F 
 
 1. 兄弟选择符(E~F):选择E元素后面的所有兄弟元素F
-    * 不论相邻与否，只要和 E 同级，F 同类
+
+     * 不论相邻与否，只要和 E 同级，F 同类
 
 ### 选择器权重
 
