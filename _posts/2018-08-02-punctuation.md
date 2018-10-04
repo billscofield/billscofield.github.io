@@ -11,11 +11,10 @@ description: 编程英文符号
 |—       | dash |
 |《》    | french quotes |
 |...     | ellipsis |
-|\*      | is multiplied by |
 |\\n    | new line |
 |\\r    | Carriage return|
 | ~   | Tilde.|
-| `   | Acute, Back quote, grave, grave accent, left quote, open quote, or a push.|
+| `   | Acute, Back quote, grave, grave accent, left quote, open quote, or a push.反引号|
 | !   | Exclamation mark, Exclamation point, or Bang.|
 | @   | Ampersat, Arobase, Asperand, At, or At symbol.|
 | #   | Octothorpe, Number, Pound, sharp, or Hash.|

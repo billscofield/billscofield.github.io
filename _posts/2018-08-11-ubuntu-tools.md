@@ -121,4 +121,9 @@ To know more about you-get, please go to https://github.com/soimort/you-get/wiki
 
 
 
+## asciinema 
+    Terminal session recorder
 
+## nethack 游戏
+sudo apt-get install nethack
+然后会有提示安装哪个版本
