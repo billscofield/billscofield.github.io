@@ -1,0 +1,8 @@
+## driftnet不能获取所有图片
+
+Google Images is probably using HTTPS, meaning the traffic is encrypted and an MitM attacker cannot see it. 
+
+It's because you can only browse Google over https only and not http.Even if you force http, the response for that request will be a redirect to https.Along with the arpspoof, you will have to use a tool which will be a middle man doing the ssl handshake with the target's browser and Google. MITMproxy works great.There is still a catch though, the target's browser will flag the connection to be insecure, because MITMproxy will be using its own selfsigned certificate for handshake.Beacuse your other end is Google, target won't be able to add an exception in the browser and continue browsing because HSTS is set.To force the browsing, you will have to add MITMproxy's cert to the trustable root certificates manually in the browser.
+
+参考链接
+    1. https://security.stackexchange.com/questions/181289/driftnet-not-picking-any-images-from-the-target

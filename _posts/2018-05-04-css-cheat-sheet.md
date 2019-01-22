@@ -21,6 +21,10 @@ redirect_from:
         * 相对于有 position(非static) 的父元素进行定位
     * fixed
         * 相对视口进行定位
+    * sticky
+        1. 必须要设置top才会起作用
+        1. https://www.cnblogs.com/s1nker/p/4835079.html
+    
     * 注意
         * 凡是 position:absolute \|\| float:left/right 的元素，display 就转换成了 block
 
@@ -28,6 +32,7 @@ redirect_from:
     * auto
     * 适用于：定位元素。即定义了position为非static的元素
     * 值越大，离用户越近，可以是负值
+
 * top
     * length 
     * percentage
@@ -133,7 +138,7 @@ redirect_from:
             }
             ```
 
-    * **指定一个元素是否可以在 "它之前的" 浮动元素旁边，或者必须向下移动(清除浮动) 在它的下面**
+    * **指定一个元素是否可以在 "它之前的 浮动元素"旁边，或者必须向下移动(清除浮动) 在它的下面**
     * clear 属性适用于浮动 和 非浮动元素。
 
     * clear:left/right的际⽤ ---> <a href="http://www.zhangxinxu.com/wordpress/2014/06/understand-css-clear-left-right-and-use/">垂直环绕布局</a>
@@ -264,11 +269,11 @@ redirect_from:
 ---
 
 * border-image
-    * border-image-source	用在边框的图片的路径。
-    	 border-image-slice	图片边框向内偏移。
-    	 border-image-width	图片边框的宽度。
-    	 border-image-outset	边框图像区域超出边框的量。
-    	 border-image-repeat	图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。
+    1. border-image-source	用在边框的图片的路径。
+    1. border-image-slice	图片边框向内偏移。
+    1. border-image-width	图片边框的宽度。
+    1. border-image-outset	边框图像区域超出边框的量。
+    1. border-image-repeat	图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。
 
 ## 背景
 * background
@@ -344,6 +349,7 @@ redirect_from:
 * color
 * opacity
     * 不透明度。值被约束在[0.0-1.0]范围内，如果超过了这个范围，其计算结果将截取到与之最相近的值。
+    * 全部的颜色,包括文字的和背景色的，不同于background:#ff0000aa
 
 ## 字体
 * font
@@ -751,7 +757,7 @@ redirect_from:
 
         * The second parameter defines the point at which the action declared in our @keyframes will occur. This value is optional and will default to “end” if left unspecified.  A direction of “start” denotes a left-continuous function and our animation’s first step will be completed as soon as the animation begins. It will jump immediately to the end of the first step and stay there until the end of this step duration.
 
-        * A direction of “end” denotes a right-continuous function and directs the movement to stay put until the duration of the first step is completed. Each option essentially moves the element from a different side and will produce different positioning for the same animation.
+        * A direction of “end” denotes([dɪˈnəʊt] 代表，指代，意思是) a right-continuous function and directs the movement to stay put until the duration of the first step is completed. Each option essentially moves the element from a different side and will produce different positioning for the same animation.
         * Here’s a visual:
 
         <img src="http://www.刘蛟.中国/resources/CSS-Cheat-Sheet/stepsvisual.webp">
@@ -777,11 +783,24 @@ redirect_from:
     * paused
 
 * **animation-fill-mode:动画结束后的状态**
-    * none:起始位置
-    * forwards:当动画完成后，保持最后一帧（在最后一个关键帧中定义）。
-    * backwards:动画等待的那段时间内，在动画显示之前，应用开始属性值,元素的样式将设置为动画第一帧的样式,设置 delay 即可看出
-    * both:设置对象状态为动画结束或开始的状态
-    * https://www.w3cplus.com/css3/understanding-css-animation-fill-mode-property.html
+    1. none
+        * none为默认值，在动画执行前和动画执行后，对元素的样式不会产生影响。 
+        * 动画执行前和执行后的状态和无动画的状态是一致的，动画执行前和执行后对元素没有产生任何样式影响。动画执行后跳到无动画状态。
+
+    1. forwards当使用这个值时，告诉浏览器：动画结束后，元素的样式将设置为动画的最后一帧的样式。 
+        * 值为forwards时，动画执行前的状态和无动画状态一致，但是动画执行后状态却不一样，查看动画效果，你会发现他的状态和动画最后一帧的状态相同。
+
+    1. backwards当使用这个值时，告诉浏览器：动画开始前，元素的样式将设置为动画的第一帧的样式。 
+        * 值为backwards时，动画执行前的状态和无动画状态 不一致，可以看出，它的状态和动画第一帧相同，但是动画执行后状态却和无动画时的状态相同。
+
+    1. both
+        * 当使用这个值时，告诉浏览器：同时使用forwards和backwards两个属性值的效果。 
+        * 动画执行前是动画第一帧的效果，动画执行后是动画最后一帧的效果。
+
+    1. 最后animation-fill-mode的状态和animation-direction的值有关。 
+        * 当animation-direction为normal 或 alternate时，和上面的状态相同。 
+        * 当animation-direction为alternate-reverse 或reverse 时，状态刚好和上面相反。从100%到0%执行。
+
 
     ```
     @keyframes [name]{
@@ -954,6 +973,11 @@ perspective:景深;//或者在子元素上设置 transform:perspective(length)
     1. GFC
 
     1. FFC
+收缩
+    absolute
+    inline-block
+    float
+    table
 
 ## 单位
 * <a href='http://pxtoem.com/'>PXtoEM</a>
@@ -996,3 +1020,24 @@ div{
     margin-top:一半;
 }
 ```
+
+
+## 清除浮动
+有疑问???为什么table可以清除，而block不可以。table是很远古的东西,
+
+```
+.clearfix::before{
+    content:'';
+    display:table;
+}
+
+上面的css可以预防margin-top塌陷(而block却是不可以的)
+.one{width:200px;height:200px;}
+.two{width:100px;height:100px;  margin-top:100px;}
+
+div.one>div.two
+```
+
+
+
+

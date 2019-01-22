@@ -1,4 +1,7 @@
-* terminator的默认高宽大小
+# terminator 
+
+## terminator的默认高宽大小配置
+
 ```
 vi ~/.config/terminator/config
 
@@ -11,11 +14,13 @@ vi ~/.config/terminator/config
 *     size = 1060, 700
 ```
 
-* ctrl+s在linux下是锁定屏幕显示的意思和ScreenLock键是一个效果;ctrl+q来解除锁定
+## vi 卡死怎么办？
 
-* 快捷键（都可以通过"man terminator"找到对应的英文帮助说明）
-```
-//第一部份：关于在同一个标签内的操作
+ctrl+s在linux下是锁定屏幕显示的意思和ScreenLock键是一个效果;ctrl+q来解除锁定
+
+## 快捷键（都可以通过"man terminator"找到对应的英文帮助说明）
+
+### 第一部份：关于在同一个标签内的操作
 Alt+Up                          //移动到上面的终端
 Alt+Down                        //移动到下面的终端
 Alt+Left                        //移动到左边的终端
@@ -37,7 +42,7 @@ Ctrl+Shift+Z                    //最大化显示当前终端并使字体放大
 Ctrl+Shift+N or Ctrl+Tab        //移动到下一个终端
 Ctrl+Shift+P or Ctrl+Shift+Tab  //Crtl+Shift+Tab 移动到之前的一个终端
 
-//第二部份：有关各个标签之间的操作
+### 第二部份：有关各个标签之间的操作
 F11                             //全屏开关
 Ctrl+Shift+T                    //打开一个新的标签
 Ctrl+PageDown                   //移动到下一个标签
@@ -55,5 +60,12 @@ Super+t                         //绑定当前标签的所有终端，向一个�
 Super+Shift+T                   //解除绑定
 Ctrl+Shift+I                    //打开一个窗口，新窗口与原来的窗口使用同一个进程
 Super+i                         //打开一个新窗口，新窗口与原来的窗口使用不同的进程
-```
 
+## Bill 正在使用的功能
+
+1. 光标颜色
+1. 透明背景
+
+## 关于不再使用 terminator 的大部分功能
+
+Bill 目前使用功能更为强大的 Tmux + terminator + zsh 作为工作环境，只有 terminator 的少部分功能还在使用。

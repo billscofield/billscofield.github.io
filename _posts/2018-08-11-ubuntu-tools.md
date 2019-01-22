@@ -127,3 +127,49 @@ To know more about you-get, please go to https://github.com/soimort/you-get/wiki
 ## nethack 游戏
 sudo apt-get install nethack
 然后会有提示安装哪个版本
+
+
+## mysql 自动补全工具
+1. sudo apt install mycli
+    1. F4 切换为vim模式
+    access denied for root@localhost???
+    1. use mysql 
+    1. update user set authentication_string=password("密码"), plugin='mysql_native_password' where user=root;
+
+## 路由跟踪指令traceroute(ICMP)(windows 用tracert)
+用来检测发出数据包的主机到目标主机之间所经过的网关数量的工具。
+
+sudo apt-get install traceroute
+    1. -n代表，仅要看ip地址，不要显示主机名、域名那些东西，
+
+ping 太粗糙
+
+tracerout www.baidu.com
+
+
+## gns3
+sudo add-apt-repository ppa:gns3/ppa
+sudo apt-get update
+sudo apt-get install gns3-gui
+
+
+Dynamips hypervisor process has stopped, return code: -11  ??? CPU不支持虚拟化??
+应该就是了，T4500 CPU 不支持虚拟化
+
+
+
+## epub(Electronic Publication)
+
+
+
+## recuva 数据恢复软件
+
+
+## nessus
+安装完成后首先进行配置
+    https://localhost:8834
+    这一步要输入license number,并会自动下载 the files(plugins) needed to scan your assets
+    
+
+## wine
+Virtual packages like 'wine' can't be removed

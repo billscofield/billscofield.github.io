@@ -555,6 +555,7 @@ bootstrap 重塑了浏览器的标签样式，统一了不同浏览器的默认�
     1. navbar-link  a.navbar-link 放到p
     1. navbar-text
     1. navbar-btn
+
     1. navbar-fixed-top
     1. navbar-fixed-bottom
     1. navbar-static-top
@@ -597,7 +598,7 @@ bootstrap 重塑了浏览器的标签样式，统一了不同浏览器的默认�
 
 1. 按钮组 button-group
     1. .btn-toolbar
-    1. .btn-group-vertical
+    1. .btn-group-vertical(nav-stacked)
     1. .btn-group.btn-group-justified
         1. 要把btn 换成 a 才可以, span 也可以
         1. 或者把btn 放进 btn-group
@@ -719,7 +720,9 @@ right:0;
 1. float
     1. .pager .previous > a/span
 
-
+## 水平改为垂直
+.nav-stacked
+.btn-group-vertical
 
 ## 打印机
 .visible-print-block
