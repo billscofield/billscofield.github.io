@@ -48,16 +48,19 @@ GNU/Linux:通常以源码方式提供
 IDE(集成电子设备)40芯带状排线
     主板上内置两个IDE接口，每个接口通过40芯连线连接两个IDE设备
     一般两个IDE控制器，最多支持4个设备
+	（Integrated digital equipment）
+	（integrated development environment）
 
 SCSI(小型计算机接口 Small Computer System Interface;)
     一个SCSI控制器最多可支持15个设备
     所有的设备只需占用一个IRQ，同时SCSI还支持相当广的设备，如CD-ROM、DVD、CDR、硬盘、磁带机、扫描仪等
     Interrupt Request 中断请求
+	（IRQ:Interrupt Request）
 
 swap分区仅用于系统访问，是唯一不需要挂载点的分区,且它的格式只能是swap分区
 
 GNOME(GNU Network Object Model Environment) 墨西哥软件设计师 Miguel 与1997年发起和领导的一个图形桌面开发项目
-在GNOME之前，KDE(K Desktop Environment)，KDE却不是完全的免费软件，因为KDE是基于Qt开发的免费软件，单QT却不是免费软件，因此Miguel和一些黑客决定开发一个图形桌面系统即GNOME
+在GNOME之前，KDE(K Desktop Environment)，KDE却不是完全的免费软件，因为KDE是基于Qt开发的免费软件，但QT却不是免费软件，因此Miguel和一些黑客决定开发一个图形桌面系统即GNOME
 在Red Hat的支持下，14个月得以完成
 
 通常USB设备被识别为SCSI设备
@@ -193,7 +196,7 @@ Minix系统的功能时分有限，因为它是专门为炒作系统的教学而
 
 1995年 Bob Young 创办了 Red Hat 公司
 
-1998年，GUN骨干分子 终于认识到 GUN Linux体系的**产业化道路的本质**，并不是什么自由哲学，而是市场竞争的驱动，因此创办了 Open Source Intiative [ɪˈnɪʃətɪv] (开放源代码促进会)
+1998年，GUN骨干分子 终于认识到 GUN Linux体系的**产业化道路的本质**，并不是什么自由哲学，而是市场竞争的驱动，因此创办了 Open Source Initiative [ɪˈnɪʃətɪv] (开放源代码促进会)
 
 
 
@@ -224,8 +227,16 @@ Minix系统的功能时分有限，因为它是专门为炒作系统的教学而
 Debian /ˈdɛ.bi.ən/ : debian package(dpkg), 前端管理工具叫 apt-get, 后缀.deb
     伊安·默多克（Ian Murdock）
     妻子叫 Deb 
-    Debian的发行及其软件源有五个分支：旧稳定分支（oldstable）、稳定分支（stable）、测试分支（testing）、不稳定分支（unstable）、实验分支（experimental）。
+
+    Debian的发行及其软件源有五个分支：
+		旧稳定分支（oldstable）
+		稳定分支（stable）
+		测试分支（testing）
+		不稳定分支（unstable）
+		实验分支（experimental）
+		
     当前的稳定分支即Stretch  （即下一个旧稳定分支），所有开发代号均出自Pixar的电影《玩具总动员》。
+
 RedHat: rpm,前端管理工具叫yum, 最新的yum升级版叫 dnf
 S.u.S.E: rpm, 前端管理工具叫 zypper
 ArchLinux: 
@@ -263,9 +274,16 @@ ssh
 网址
     1. ifconfig
     1. ip addr list
+	1. hostname -i
+	1. hostname -I
+
 防火墙 iptables
     查看
         iptables -L -n
+		
+		-L, --list
+		-n, --numeric		numeric outpus of address and ports
+		
     关闭    
         (centos7)systemctl disable firewalld.service
                  systemctl stop firewalld.service
@@ -279,16 +297,20 @@ echo（回显） $SHELL
 物理终端 
     console
     /dev/console
+	
 虚拟终端 
     tty
     ctrl alt f[1,6]
     /dev/tty#[1,6]
+	
 图形终端 
     ctrl alt f7
+
 串行终端 
     ttys
     用不着显卡
     /dev/ttys#[]
+
 伪终端(仿真终端)
     pty
     xshell, 图形窗口一个终端窗口
@@ -307,6 +329,7 @@ CLI接口:
     halt
 
 自由学习修改，自由分发，自由创建衍生版
+
 Linux哲学思想
     1. 一切皆对象
     1. KISS(keep it simple stupid)
@@ -316,8 +339,10 @@ Linux哲学思想
 
 
 文件系统，文件，目录
+
 文件:一段流式数据(管道，tompson老板给的强迫性建议，O(∩ ∩)O哈哈~)
     平面化，层次化
+
 目录：路径映射
 
 文件名规则
@@ -325,7 +350,7 @@ Linux哲学思想
     目录也是文件，在同一路径下，两个文件不能同名
     最后一个叫 basename, 不论是文件还是目录
     前面的叫 direction-name
-    除/意外任意字符
+    除/以外任意字符
 
 
 
@@ -399,6 +424,7 @@ Linux哲学思想
     cd -
         $PWD
         $OLDPWD
+		
     ls 
         -A 不显示 ./ ../
         文件类型
@@ -411,7 +437,8 @@ Linux哲学思想
             l: 软链接
             s: socket套接字文件, 两个进程进行通信的文件
             p: pipe管道
-        -rw-rw-r-- 1 bill bill 2.7K Aug 17 15:26 font.md
+        
+		-rw-rw-r-- 1 bill bill 2.7K Aug 17 15:26 font.md
             1:硬链接数
             2.7k 文件大小, 一般是byte格式的,不是的话加 -h 选项
                 可能丢失精度
@@ -419,6 +446,7 @@ Linux哲学思想
         -d 看basename 为目录的目录自身的信息
         -r 逆序
         -R 递归
+		
     cat(concatenate 美[kɑnˈkæt(ə)ˌneɪt] 把 （一系列事件、事情等）联系起来)
         不要查看二进制文件，有可能损坏二进制文件
         -S 每行末尾显示$
@@ -436,9 +464,10 @@ Linux哲学思想
         注意：变量引用的正规符号
             ${PWD}
     shutdown 
-        -k 逗你玩
+        -k 逗你玩 kidding
         -c //取消
-    wall
+    
+	wall
         send message to everyone
     
     date
@@ -454,16 +483,19 @@ Linux哲学思想
             月日时分年.秒
     clock(软链接)
         硬件时钟（Ubuntu没有)
+		
     hwclock(我的Ubuntu mate 说不能获取)
         hardware clock
         系统启动是从硬件读取日期和时间信息，之后就不再与硬件相关联
         -s --hctosys
         -w --systohc
         hwclock -w
+		
     cal(calendar)
         cal 2018
         cal 12 2018
-    w(who)
+    
+	w(who)
 
 
 ## Linux 文件系统
@@ -548,6 +580,7 @@ which  --skip-alias 忽略别名
 who -b 系统最近一次的启动时间
     -u 谁登录了，
     -r 运行级别
+	
 w who的增强版，显示他们在做什么
 
 $HISTSIZE
@@ -570,6 +603,7 @@ $HISTCONTROL
 mkdir -v 查看创建过程，通常配合 -p
 
 rmdir 删除空目录
+
 rmdir -p /tmp/m/n/p   删除p后，n 下没有文件，则继续删除n, n空了，继续删除m,...
 
 **mkdir /tmp/{a,b}  -> /tmp/a, /tmp/b**
