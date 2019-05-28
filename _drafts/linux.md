@@ -104,6 +104,7 @@ GCC
 
 
 1946年世界上第一台电子计算机 ENIAC 在美国诞生
+    Electronic Numerical Integreator and Calcualtor
 
 Ken Thompson(1943年2月4日)
     1966年加入了贝尔实验室。
@@ -126,7 +127,7 @@ ARPA(advanced research projects agency)
 1977年，ISO(international standardization orgznization)设立分委员会，以“开放互联”为目标，专门研究网络体系结构
 1984年，颁布 "开放系统互连基本参考模型" (Open system interconnection basic reference model)
 
-multics
+multics(Multiplexed Information and Computing Service)
     1964年，贝尔实验室、麻省理工学院和通用电器, multics项目
     1969年，因MULTICS计划的工作进度过于缓慢，最后终究遭裁撤的命运，贝尔实验室退出此计划。
     1970年，GE出售其电脑业务，霍尼韦尔公司，作为一个商业化的产品提供了Multics系统，并远销几十个国家。
@@ -188,7 +189,7 @@ unix
     CygnusSupport(天鹅座支持公司)
     Cygnus Solutions（最初名为Cygnus Support）旨在为自由软件提供商业支持。它的口号是："让自由软件使用无忧(Making free software affordable)"。Cygnus是"Cygnus, Your GNU Support"的递归式首字母缩写词。
 
-Minix系统的功能时分有限，因为它是专门为炒作系统的教学而设计的
+Minix系统的功能十分有限，因为它是专门为操作系统的教学而设计的
 
 1991年10月 Linus Torvalds 发布了linux
 
@@ -1524,7 +1525,7 @@ B8:27:EB:BB:64:68
 ## compress
 tar -c
     -tvf    (list)
-    -x
+   -x
     
     -z:gzip
     -j:bunzip2
@@ -1588,3 +1589,12 @@ tar -c
 
 ## Word
 3Byte 24bit
+
+
+
+
+x window 起源于 Athena 计划,1984年麻省理工学院和DEC公司基于斯坦福大学的W Window 开发了X Window
+
+Gnome,KDE,Unity
+
+

@@ -55,7 +55,7 @@ NetWare
 1. Unified Extensible Firmware Interface 统一的可扩展固件接口
 1. 旨在代替BIOS（基本输入/输出系统 Basic input/output system）
 1. UEFI启动模式：一般它分的区就是GPT分区，它们之间的关系也是分不开的，所以我们也叫它UEFI+GPT。
-    1. GUIP/GPT(GUID Partition Table)
+    1. GUID/GPT(GUID Partition Table)
 
 1. EFI在功能上完全等同于一个轻量化的OS，但是EFI在制定时就定位到不足以成为专业OS的地位上，首先，它只是一个硬件和操作系统间的一个接口；
 
@@ -127,7 +127,7 @@ OS Optimized ( ['ɒptɪmaɪz] 最优化，使完善) Defaults
 ## 硬盘
 ### MBR
 1. 扇区
-    1. 为了方便计算机访问硬盘，把硬盘上的空间划分成许许多多的区块（英文叫sectors，即扇区），然后**给每个区块分配一个地址，称为逻辑块地址（即LBA）。**
+    1. 为了方便计算机访问硬盘，把硬盘上的空间划分成许许多多的区块（英文叫sectors，即扇区），然后**给每个区块分配一个地址，称为逻辑块地址（即LBA, Logical Block Address）。**
 
     1. 引导扇区是每个分区（Partition）的第一扇区，而主引导扇区是硬盘的第一扇区。
 
